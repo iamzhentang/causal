@@ -1,0 +1,5 @@
+source /etc/network_turbo
+git clone https://github.com/iamzhentang/causal.git
+conda create -n cs0 python=3.9 -y
+conda activate cs0
+pip install nonlincausality matplotlib scikit-learn tensorflow==2.15.1 statsmodels
