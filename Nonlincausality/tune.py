@@ -1,3 +1,7 @@
+
+
+# 生成数据
+#%% Data generation Y->X
 import os
 import numpy as np
 import nonlincausality as nlc
@@ -6,27 +10,35 @@ import pandas as pd
 import logging
 import tensorflow as tf
 from optuna.integration import TFKerasPruningCallback
+
 # 配置 logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-
-# 生成数据
-#%% Data generation Y->X
 # 读取数据
-emission_data = pd.read_csv('dataset/total_monthly_state_emission.csv')
-vehicle_data = pd.read_csv('dataset/result_anhui.csv')
+emission_data = pd.read_csv('dataset/000/anhui/total_monthly_state_emission.csv')
+vehicle_data = pd.read_csv('dataset/000/anhui/result_anhui.csv')
+df_col = {
+    'emission': 0,
+    'EVER': 1,
+    'PHEV': 2,
+    'FUEL': 3,
+    'EV': 4
+}
+fuel_col_idx = df_col['EVER']
+# 数据集划分比例
+train_percent = 0.6
+val_percent = 0.2
+test_percent = 0.2
+
 # 数据日期清洗和准备
-# 首先，你需要确保日期列是字符串类型
 emission_data['date'] = emission_data['date'].astype(str)
 vehicle_data['date'] = vehicle_data['date'].astype(str)
-# 使用pd.to_datetime将日期字符串转换为日期时间对象
-# format参数指定了原始日期字符串的格式Jan-19
 emission_data['date'] = pd.to_datetime(emission_data['date'], format='%b-%y')
-vehicle_data['date'] = pd.to_datetime(vehicle_data['date'], format='%Y/%m/%d')
-# 将日期时间对象转换回字符串，格式为'YYYY-MM-DD'
+# vehicle_data['date'] = pd.to_datetime(vehicle_data['date'], format='%Y/%m/%d')
 emission_data['date'] = emission_data['date'].dt.strftime('%Y-%m-%d')
-vehicle_data['date'] = vehicle_data['date'].dt.strftime('%Y-%m-%d')
+# vehicle_data['date'] = vehicle_data['date'].dt.strftime('%Y-%m-%d')
+
 # 选取时间范围
 start_date = '2022-06-01'
 end_date = '2024-09-01'
@@ -35,171 +47,127 @@ emission_data_mask = (emission_data['date'] >= start_date) & (emission_data['dat
 
 emission_data = emission_data.loc[emission_data_mask]
 vehicle_data = vehicle_data.loc[vehicle_data_mask]
+
 # 丢掉第一列
-emission_data=emission_data.drop(emission_data.columns[[0]],axis=1)
+emission_data = emission_data.drop(emission_data.columns[[0]], axis=1)
+
 # 数据对齐
 emission_data.set_index('date', inplace=True)
 vehicle_data.set_index('date', inplace=True)
-
-# logging.debug(emission_data)
-# logging.debug(vehicle_data)
-# Merge Data by Date
-# Group vehicle_data by date and sum the values for all cities
 vehicle_data_grouped = vehicle_data.groupby('date').sum()
-
-# Merge the emission_data and vehicle_data_grouped datasets on the date column
 merged_data = pd.merge(emission_data, vehicle_data_grouped, on='date', how='inner')
-
-# Display the merged data
-merged_data=merged_data.drop(merged_data.columns[[1]],axis=1)
+merged_data = merged_data.drop(merged_data.columns[[1]], axis=1)
 merged_data
 
-#%%
-# 准备数据集
+# 数据模块化
 from sklearn.preprocessing import StandardScaler
-# 创建归一化器
 scaler = StandardScaler()
-
-# 归一化数据
-'''
-FIXME: 一起做归一化之后出现大量极值
-'''
 merged_data_n = scaler.fit_transform(merged_data)
-data_train = merged_data_n[:16, [1, 0]]
-data_val = merged_data_n[16:22, [1, 0]]
-data_test = merged_data_n[22:, [1, 0]]
-#%%
-import tensorflow as tf
+# 确保比例之和为1
+assert train_percent + val_percent + test_percent == 1, "划分比例之和必须为1"
 
-# 定义训练函数
-lags = [3]
+# 计算索引
+total = len(merged_data_n)
+train_end = int(total * train_percent)
+val_end = int(train_end) + round(total * val_percent)
+
+# 数据集划分
+data_train = merged_data_n[:train_end, [fuel_col_idx, 0]]
+data_val = merged_data_n[train_end:val_end, [fuel_col_idx, 0]]
+data_test = merged_data_n[val_end:, [fuel_col_idx, 0]]
+print(data_train.shape, data_val.shape, data_test.shape)
+# data_train = merged_data_n[:16, [fuel_col_idx, 0]]
+# data_val = merged_data_n[16:22, [fuel_col_idx, 0]]
+# data_test = merged_data_n[22:, [fuel_col_idx, 0]]
+
+# 定义相关函数
+lags = [2]
+
+def compute_error(data_test, model_X, model_XY, lag):
+    from nonlincausality.utils import prepare_data_for_prediction, calculate_pred_and_errors
+
+    data_X, data_XY = prepare_data_for_prediction(data_test, lag)
+    X_pred_X = model_X.predict(data_X)
+    X_pred_XY = model_XY.predict(data_XY)
+    error_X = np.mean((data_test[lag:, 0] - X_pred_X) ** 2)
+    error_XY = np.mean((data_test[lag:, 0] - X_pred_XY) ** 2)
+    print("debug_here")
+    print(data_test[:, 0].shape)
+    print(data_test[lag:, 0].shape)
+    print(X_pred_X.shape)
+    return error_X, error_XY
+
+# 相关主目标函数
 def objective(trial):
-    # 定义网络层数
-    n_layers = 2 # trial.suggest_int('n_layers', 2, 4)
-    # lags = [3]#trial.suggest_int('lags', 2, 4)
-    
-    # 构建网络配置
+    n_layers = 2
     NN_config = ['g', 'dr']
     NN_neurons = []
-    
     for i in range(n_layers):
-        # 交替使用Dense和Dropout层
         if i % 2 == 0:
-            # NN_config.append('d')
-            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 32, 256))
+            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 64, 512, step=16))
         else:
-            # NN_config.append('dr')
-            NN_neurons.append(trial.suggest_float(f'dropout_{i}', 0.01, 0.3))
+            NN_neurons.append(trial.suggest_float(f'dropout_{i}', 0.1, 0.3, step=0.05))
+
     callbacks = [
-        TFKerasPruningCallback(trial, 'val_loss'),  # 使用验证损失作为剪枝指标
-        tf.keras.callbacks.EarlyStopping(
-            monitor='val_loss',
-            patience=10,
-            restore_best_weights=True
-        )
+        TFKerasPruningCallback(trial, 'val_loss'),
+        tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
     ]
-    # 超参数配置
+
     params = {
         'x': data_train,
         'maxlag': lags,
         'NN_config': NN_config,
         'NN_neurons': NN_neurons,
         'x_test': data_test,
-        'run': trial.suggest_int('run', 2, 5),
-        'epochs_num': [
-            trial.suggest_int('epochs_1', 30, 200),
-            trial.suggest_int('epochs_2', 20, 100)
-        ],
-        'learning_rate': [
-            trial.suggest_float('lr_1', 1e-4, 1e-2, log=True),
-            trial.suggest_float('lr_2', 1e-5, 1e-3, log=True)
-        ],
-        'batch_size_num': trial.suggest_int('batch_size', 4, 64),
+        'run': trial.suggest_int('run', 1, 3, step=1),
+        'epochs_num': [trial.suggest_int('epochs_1', 30, 100, step=10), trial.suggest_int('epochs_2', 20, 100, step=10)],
+        'learning_rate': [trial.suggest_float('lr_1', 1e-4, 1e-2, log=True), trial.suggest_float('lr_2', 1e-5, 1e-3, log=True)],
+        'batch_size_num': trial.suggest_int('batch_size', 2, 4, step=1),
         'x_val': data_val,
-        'reg_alpha': trial.suggest_float('reg_alpha', 1e-5, 1e-2, log=True),
-        'callbacks': callbacks,
-        'verbose': False,
-        'plot': False
+        'regularization': trial.suggest_categorical('regularization', ['l1_l2', 'l1', 'l2', 'None']),
     }
-    
+    # set numbers of reg_alpha_1 or reg_alpha_1 via l1 l2 config
+    if params['regularization'] == 'l1_l2':
+        params['reg_alpha'] = [
+            trial.suggest_float('reg_alpha_1', 1e-5, 1e-2, log=True),
+            trial.suggest_float('reg_alpha_2', 1e-5, 1e-2, log=True)
+        ]
+    elif params['regularization'] in ['l1', 'l2']:
+        params['reg_alpha'] = trial.suggest_float('reg_alpha_1', 1e-5, 1e-2, log=True)
+    else:
+        params['reg_alpha'] = None
+
+    params['callbacks'] = callbacks
+    params['verbose'] = False
+    params['plot'] = False
+
     try:
-        # 运行模型
         results = nlc.nonlincausalityNN(**params)
-        
-        # 计算所有lag的平均误差作为优化目标
         total_error = 0
         for lag in lags:
-            best_errors_X = results[lag].best_errors_X
-            best_errors_XY = results[lag].best_errors_XY
-            mse = np.mean(best_errors_X**2)  # 使用X预测的MSE作为评估指标
-            total_error += mse
-            
+            model_X = results[lag].best_model_X
+            model_XY = results[lag].best_model_XY
+            mse_X, mse_XY = compute_error(data_test, model_X, model_XY, lag)
+            total_error += mse_X  # 只进行 X 预测的 MSE 计算
         avg_error = total_error / len(lags)
-        
         return avg_error
-        
     except Exception as e:
         print(f"Trial failed: {e}")
         return float('inf')
 
-# 创建 study 对象时使用 MedianPruner
+# 创建学习对象
 study = optuna.create_study(
     direction='minimize',
-    pruner=optuna.pruners.MedianPruner(
-        n_startup_trials=5,        # 在开始剪枝之前完成的试验数
-        n_warmup_steps=10,         # 在开始剪枝之前的训练步数
-        interval_steps=1           # 进行剪枝检查的间隔步数
-    ),
+    pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
     sampler=optuna.samplers.TPESampler(seed=42)
 )
-
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
 # 开始优化
-study.optimize(objective, n_trials=50, n_jobs=1)  # 可以根据需要调整trials数量
+study.optimize(objective, n_trials=50, n_jobs=-1)
 
-# 打印最佳参数
+# 打印结果
 print("\nBest parameters:")
 print(study.best_params)
 print("\nBest value (Average MSE):", study.best_value)
-#%%
-# # 使用最佳参数运行最终模型
-# best_params = study.best_params
-
-# # 构建最佳网络配置
-# best_n_layers = best_params['n_layers']
-# best_NN_config = []
-# best_NN_neurons = []
-
-# for i in range(best_n_layers):
-#     if i % 2 == 0:
-#         best_NN_config.append('d')
-#         best_NN_neurons.append(best_params[f'n_units_{i}'])
-#     else:
-#         best_NN_config.append('dr')
-#         best_NN_neurons.append(best_params[f'dropout_{i}'])
-
-# # 运行最终模型
-# final_results = nlc.nonlincausalityNN(
-#     x=data_train,
-#     maxlag=lags,
-#     NN_config=best_NN_config,
-#     NN_neurons=best_NN_neurons,
-#     x_test=data_test,
-#     run=best_params['run'],
-#     epochs_num=[best_params['epochs_1'], best_params['epochs_2']],
-#     learning_rate=[best_params['lr_1'], best_params['lr_2']],
-#     batch_size_num=best_params['batch_size'],
-#     x_val=data_val,
-#     reg_alpha=best_params['reg_alpha'],
-#     callbacks=None,
-#     verbose=True,
-#     plot=True
-# )
-
-# # 打印最终结果
-# for lag in lags:
-#     p_value = final_results[lag].p_value
-#     test_statistic = final_results[lag]._test_statistic
-#     print(f"\nFor lag {lag}:")
-#     print(f"Test statistic = {test_statistic}")
-#     print(f"p-value = {p_value}")
 #%%

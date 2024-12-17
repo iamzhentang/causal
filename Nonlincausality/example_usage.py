@@ -40,7 +40,7 @@ plt.ylabel("Signals [AU]")
 plt.legend()
 
 #%% Test in case of presence of the causality
-lags = [50, 150]
+lags = [50]
 data_train = data[:6000, :]
 data_val = data[6000:8000, :]
 data_test = data[8000:, :]
@@ -51,14 +51,14 @@ results = nlc.nonlincausalityNN(
     NN_config=['d','dr','d','dr'],
     NN_neurons=[100,0.05,100,0.05],
     x_test=data_test,
-    run=3,
+    run=1,
     epochs_num=[50, 50],
     learning_rate=[0.0001, 0.00001],
     batch_size_num=32,
     x_val=data_val,
     reg_alpha=None,
     callbacks=None,
-    verbose=True,
+    verbose=False,
     plot=True,
 )
 
@@ -103,6 +103,14 @@ for lag in lags:
     plt.suptitle("Lag = %d" % lag)
 
     # Another way of obtaining predicted values (and errors)
+    # 添加调试信息
+    print(f"data_test shape: {data_test.shape}")
+    print(f"data_X shape: {data_X.shape}")
+    print(f"data_XY shape: {data_XY.shape}")
+    print(f"best_model_X: {best_model_X}")
+    print(f"best_model_XY: {best_model_XY}")
+    print(f"data_test[lag:, emission_col_idx] shape: {data_test[lag:, 0].shape}")
+    print(f"data_test[lag:, emission_col_idx]: {data_test[lag:, 0]}")
     X_pred_X, X_pred_XY, error_X, error_XY = calculate_pred_and_errors(
         data_test[lag:, 0], 
         data_X, 
