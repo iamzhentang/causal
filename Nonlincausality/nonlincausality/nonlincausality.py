@@ -458,7 +458,7 @@ def nonlincausalityNN(
     regularization=None, 
     reg_alpha=None,
     callbacks=None,
-    verbose=True,
+    verbose=False,
     plot=False,
 ):
     """
@@ -962,7 +962,7 @@ def nonlincausalitymeasureNN(
     regularization=None, 
     reg_alpha=None,
     callbacks=None,
-    verbose=True,
+    verbose=False,
     plot=False,
     plot_causality=True,
 ):

@@ -3,19 +3,26 @@
 # 生成数据
 #%% Data generation Y->X
 import os
+# 设置环境变量，必须在导入 tensorflow 之前
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+pid = os.getpid()
+print(f"Current PID: {pid}")
 import numpy as np
 import nonlincausality as nlc
 import optuna
 import pandas as pd
 import logging
 import tensorflow as tf
-from optuna.integration import TFKerasPruningCallback
+# from optuna.integration import TFKerasPruningCallback
 import concurrent.futures
+# tf.config.experimental.enable_tensor_float_32_execution(False)
 
 # 配置 logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+# 只显示ERROR级别的日志
+# optuna.logging.set_verbosity(optuna.logging.ERROR)
 
 # 数据集划分比例---global
 train_percent = 0.6
@@ -104,8 +111,8 @@ def compute_error(data_test, model_X, model_XY, lag):
     from nonlincausality.utils import prepare_data_for_prediction, calculate_pred_and_errors
 
     data_X, data_XY = prepare_data_for_prediction(data_test, lag)
-    X_pred_X = model_X.predict(data_X)
-    X_pred_XY = model_XY.predict(data_XY)
+    X_pred_X = model_X.predict(data_X, verbose=0)
+    X_pred_XY = model_XY.predict(data_XY, verbose=0)
     error_X = np.mean((data_test[lag:, 0] - X_pred_X) ** 2)
     error_XY = np.mean((data_test[lag:, 0] - X_pred_XY) ** 2)
     # print("debug_here")
@@ -121,18 +128,22 @@ def objective(trial, merged_data_n, fuel_col_idx):
     # 获取当前 trial 的开始时间
     start_time = trial.datetime_start
     data_train, data_val, data_test = data_selection(merged_data_n, fuel_col_idx)
-    # 输出当前 trial 的信息
-    print(f"启动第 {trial_number} 个 trial，开始时间为 {start_time}")
-    print(data_train.shape, data_val.shape, data_test.shape)
+    # # 输出当前 trial 的信息
+    # print(f"启动第 {trial_number} 个 trial，开始时间为 {start_time}")
+    # print(data_train.shape, data_val.shape, data_test.shape)
 
 
     n_layers = 2
     NN_config = ['g', 'dr']
     NN_neurons = []
-    
+
+    # 根据输入数据大小调整神经元数量
+    input_size = data_train.shape[1]  # 获取输入维度
+    max_neurons = min(512, input_size * 4)  # 限制最大神经元数量
+
     for i in range(n_layers):
         if i % 2 == 0:
-            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 64, 512, step=16))
+            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 4, 64, step=4))
         else:
             NN_neurons.append(trial.suggest_float(f'dropout_{i}', 0.1, 0.3, step=0.05))
 
@@ -140,6 +151,9 @@ def objective(trial, merged_data_n, fuel_col_idx):
     #     TFKerasPruningCallback(trial, 'val_loss'),
     #     tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
     # ]
+    # 添加数据shape检查
+    # logger.info(f"Data shapes - Train: {data_train.shape}, Val: {data_val.shape}, Test: {data_test.shape}")
+    # logger.info(f"Network architecture: {NN_neurons}")
     lags = [2, 4] # TODO
     params = {
         'x': data_train,
@@ -150,7 +164,7 @@ def objective(trial, merged_data_n, fuel_col_idx):
         'run': trial.suggest_int('run', 1, 3, step=1),
         'epochs_num': [trial.suggest_int('epochs_1', 30, 100, step=10), trial.suggest_int('epochs_2', 20, 100, step=10)],
         'learning_rate': [trial.suggest_float('lr_1', 1e-4, 1e-2, log=True), trial.suggest_float('lr_2', 1e-5, 1e-3, log=True)],
-        'batch_size_num': trial.suggest_int('batch_size', 2, 4, step=1),
+        'batch_size_num': trial.suggest_int('batch_size', 8, 16, step=4),
         'x_val': data_val,
         'regularization': trial.suggest_categorical('regularization', ['l1_l2', 'l1', 'l2', 'None']),
     }
@@ -182,9 +196,41 @@ def objective(trial, merged_data_n, fuel_col_idx):
     except Exception as e:
         print(f"Trial failed: {e}")
         return float('inf')
+    finally:
+        tf.keras.backend.clear_session()  # 清理会话
+
+# def my_callback(study, trial):
+#     # 获取当前试验的值和参数
+#     current_value = trial.value if trial.value is not None else "None"
+#     current_params = trial.params
+#     study_name = study.study_name  # 获取study名称
+
+#     # 打印自定义消息，包含study_name
+#     logging.info(f"[I {logging.Formatter().formatTime()}] Trial {trial.number} finished with value: {current_value} and parameters: {current_params}. Best is trial {study.best_trial.number} with value: {study.best_value}. Study name: {study_name}")
 
 def run_study(study, objective, data, df_col):
-    study.optimize(lambda trial: objective(trial, data, df_col), n_trials=40, n_jobs=-1)
+    gpus = tf.config.list_physical_devices('GPU')
+    if gpus:
+        try:
+            for gpu in gpus:
+                tf.config.experimental.set_memory_growth(gpu, True)
+        except RuntimeError as e:
+            print(e)
+    study.optimize(lambda trial: objective(trial, data, df_col), n_trials=20, n_jobs=1)
+
+# def create_custom_logger():
+#     optuna.logging.set_verbosity(optuna.logging.INFO)
+#     original_handler = optuna.logging._get_library_root_logger().handlers[0]
+    
+#     class CustomFormatter(optuna.logging.LoggerFormatter):
+#         def __call__(self, record):
+#             # 添加 study name 到日志信息中
+#             if hasattr(record, 'study_name'):
+#                 record.msg = f"[{record.study_name}] {record.msg}"
+#             return super().__call__(record)
+    
+#     original_handler.setFormatter(CustomFormatter())
+
 
 if __name__ == "__main__":
 
@@ -195,30 +241,45 @@ if __name__ == "__main__":
     vehicle_data = pd.read_csv('dataset/000/anhui/result_anhui.csv')
     merged_data_n = prepare_data(emission_data, vehicle_data)
 
-    # 创建学习对象
+    # # 在创建 study 之前调用
+    # create_custom_logger()
+    # 创建学习对象时添加 study_name
     study_ever = optuna.create_study(
+        study_name="EVER_STUDY",  # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
         sampler=optuna.samplers.TPESampler(seed=42)
     )
     study_ev = optuna.create_study(
+        study_name="EV_STUDY",    # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
         sampler=optuna.samplers.TPESampler(seed=42)
     )
     study_phev = optuna.create_study(
+        study_name="PHEV_STUDY",  # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
         sampler=optuna.samplers.TPESampler(seed=42)
     )
     study_fuel = optuna.create_study(
+        study_name="FUEL_STUDY",  # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
         sampler=optuna.samplers.TPESampler(seed=42)
     )
 
     # 并行运行多个 Study
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    # with concurrent.futures.ThreadPoolExecutor() as executor:
+    #     futures = [
+    #         executor.submit(run_study, study_ever, objective, merged_data_n, df_col['EVER']),
+    #         executor.submit(run_study, study_ev, objective, merged_data_n, df_col['EV']),
+    #         executor.submit(run_study, study_phev, objective, merged_data_n, df_col['PHEV']),
+    #         executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL'])
+    #     ]
+    #     for future in concurrent.futures.as_completed(futures):
+    #         future.result()  # 检查是否有异常
+    with concurrent.futures.ProcessPoolExecutor() as executor:
         futures = [
             executor.submit(run_study, study_ever, objective, merged_data_n, df_col['EVER']),
             executor.submit(run_study, study_ev, objective, merged_data_n, df_col['EV']),
@@ -226,8 +287,7 @@ if __name__ == "__main__":
             executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL'])
         ]
         for future in concurrent.futures.as_completed(futures):
-            future.result()  # 检查是否有异常
-
+            future.result()
     # 打印结果
     print("\n study_ever Best parameters:")
     print(study_ever.best_params)
@@ -253,37 +313,38 @@ if __name__ == "__main__":
 #     merged_data_n = prepare_data(emission_data, vehicle_data)
 #     # 创建学习对象
 #     study_ever = optuna.create_study(
+#         study_name="EVER_STUDY",  # 添加名称
 #         direction='minimize',
 #         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
 #         sampler=optuna.samplers.TPESampler(seed=42)
 #     )
-#     # 创建学习对象
 #     study_ev = optuna.create_study(
+#         study_name="EV_STUDY",    # 添加名称
 #         direction='minimize',
 #         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
 #         sampler=optuna.samplers.TPESampler(seed=42)
 #     )
-#     # 创建学习对象
 #     study_phev = optuna.create_study(
+#         study_name="PHEV_STUDY",  # 添加名称
 #         direction='minimize',
 #         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
 #         sampler=optuna.samplers.TPESampler(seed=42)
 #     )
-#     # 创建学习对象
 #     study_fuel = optuna.create_study(
+#         study_name="FUEL_STUDY",  # 添加名称
 #         direction='minimize',
 #         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
 #         sampler=optuna.samplers.TPESampler(seed=42)
 #     )
 
 #     # 开始优化
-#     study_ever.optimize(lambda trial: objective(trial, merged_data_n, df_col['EVER']), n_trials=40, n_jobs=-1)
+#     study_ever.optimize(lambda trial: objective(trial, merged_data_n, df_col['EVER']), n_trials=20, n_jobs=2)
 #     # 开始优化
-#     study_ev.optimize(lambda trial: objective(trial, merged_data_n, df_col['EV']), n_trials=40, n_jobs=-1)
+#     study_ev.optimize(lambda trial: objective(trial, merged_data_n, df_col['EV']), n_trials=20, n_jobs=2)
 #     # 开始优化
-#     study_phev.optimize(lambda trial: objective(trial, merged_data_n, df_col['PHEV']), n_trials=40, n_jobs=-1)
+#     study_phev.optimize(lambda trial: objective(trial, merged_data_n, df_col['PHEV']), n_trials=20, n_jobs=2)
 #     # 开始优化
-#     study_fuel.optimize(lambda trial: objective(trial, merged_data_n, df_col['FUEL']), n_trials=40, n_jobs=-1)
+#     study_fuel.optimize(lambda trial: objective(trial, merged_data_n, df_col['FUEL']), n_trials=20, n_jobs=2)
 
 #     # 打印结果
 #     print("\n study_ever Best parameters:")
