@@ -7,6 +7,7 @@ import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 pid = os.getpid()
 print(f"Current PID: {pid}")
+import argparse
 import numpy as np
 import nonlincausality as nlc
 import optuna
@@ -35,6 +36,10 @@ df_col = {
     'FUEL': 3,
     'EV': 4
 }
+parser = argparse.ArgumentParser()
+parser.add_argument('--province', type=str, default='anhui',
+                    help='province name for data loading')
+
 def prepare_data(emission_data, vehicle_data):
     # # 读取数据
     # emission_data = pd.read_csv('dataset/000/anhui/total_monthly_state_emission.csv')
@@ -55,7 +60,7 @@ def prepare_data(emission_data, vehicle_data):
     # 数据日期清洗和准备
     emission_data['date'] = emission_data['date'].astype(str)
     vehicle_data['date'] = vehicle_data['date'].astype(str)
-    emission_data['date'] = pd.to_datetime(emission_data['date'], format='%b-%y')
+    emission_data['date'] = pd.to_datetime(emission_data['date'], format='%B %Y')  
     # vehicle_data['date'] = pd.to_datetime(vehicle_data['date'], format='%Y/%m/%d')
     emission_data['date'] = emission_data['date'].dt.strftime('%Y-%m-%d')
     # vehicle_data['date'] = vehicle_data['date'].dt.strftime('%Y-%m-%d')
@@ -216,7 +221,16 @@ def run_study(study, objective, data, df_col):
                 tf.config.experimental.set_memory_growth(gpu, True)
         except RuntimeError as e:
             print(e)
-    study.optimize(lambda trial: objective(trial, data, df_col), n_trials=20, n_jobs=1)
+            
+    try:
+        study.optimize(lambda trial: objective(trial, data, df_col), n_trials=20, n_jobs=1)
+        return {
+            'best_params': study.best_params if study.best_trial else None,
+            'best_value': study.best_value if study.best_trial else None
+        }
+    except Exception as e:
+        print(f"Study optimization failed: {e}")
+        return None
 
 # def create_custom_logger():
 #     optuna.logging.set_verbosity(optuna.logging.INFO)
@@ -235,11 +249,18 @@ def run_study(study, objective, data, df_col):
 if __name__ == "__main__":
 
 # Trial 4 finished with value: 1.7920793147689889 and parameters: {'n_units_0': 160, 'dropout_1': 0.25, 'run': 1, 'epochs_1': 100, 'epochs_2': 20, 'lr_1': 0.0007929543332500274, 'lr_2': 1.657312543660192e-05, 'batch_size': 4, 'regularization': 'l1', 'reg_alpha_1': 0.0026194948616905154}. Best is trial 4 with value: 1.7920793147689889
-
+    args = parser.parse_known_args()[0]
+    # 获取省份名称首字母大写形式
+    province_cap = args.province.capitalize()
     # 读取数据
-    emission_data = pd.read_csv('dataset/000/anhui/total_monthly_state_emission.csv')
-    vehicle_data = pd.read_csv('dataset/000/anhui/result_anhui.csv')
+    emission_data = pd.read_csv('dataset/total_monthly_state_emission.csv')
+    selected_columns = emission_data[['num', 'date']].copy()  # 使用列名选择
+    selected_columns[province_cap] = emission_data[province_cap]  # 添加省份列
+    # 更新emission_data
+    emission_data = selected_columns
+    vehicle_data = pd.read_csv(f'dataset/car/result_{args.province}.csv')  
     merged_data_n = prepare_data(emission_data, vehicle_data)
+
 
     # # 在创建 study 之前调用
     # create_custom_logger()
@@ -269,41 +290,30 @@ if __name__ == "__main__":
         sampler=optuna.samplers.TPESampler(seed=42)
     )
 
-    # 并行运行多个 Study
-    # with concurrent.futures.ThreadPoolExecutor() as executor:
-    #     futures = [
-    #         executor.submit(run_study, study_ever, objective, merged_data_n, df_col['EVER']),
-    #         executor.submit(run_study, study_ev, objective, merged_data_n, df_col['EV']),
-    #         executor.submit(run_study, study_phev, objective, merged_data_n, df_col['PHEV']),
-    #         executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL'])
-    #     ]
-    #     for future in concurrent.futures.as_completed(futures):
-    #         future.result()  # 检查是否有异常
+    results = {}
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        futures = [
-            executor.submit(run_study, study_ever, objective, merged_data_n, df_col['EVER']),
-            executor.submit(run_study, study_ev, objective, merged_data_n, df_col['EV']),
-            executor.submit(run_study, study_phev, objective, merged_data_n, df_col['PHEV']),
-            executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL'])
-        ]
-        for future in concurrent.futures.as_completed(futures):
-            future.result()
+        futures = {
+            'EVER': executor.submit(run_study, study_ever, objective, merged_data_n, df_col['EVER']),
+            'EV': executor.submit(run_study, study_ev, objective, merged_data_n, df_col['EV']), 
+            'PHEV': executor.submit(run_study, study_phev, objective, merged_data_n, df_col['PHEV']),
+            'FUEL': executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL'])
+        }
+        
+        for name, future in futures.items():
+            try:
+                results[name] = future.result()
+            except Exception as e:
+                print(f"Error in {name} study: {e}")
+                results[name] = None
+
     # 打印结果
-    print("\n study_ever Best parameters:")
-    print(study_ever.best_params)
-    print("\nBest value (Average MSE):", study_ever.best_value)
-
-    print("\n study_ev Best parameters:")
-    print(study_ev.best_params)
-    print("\nBest value (Average MSE):", study_ev.best_value)
-
-    print("\n study_phev Best parameters:")
-    print(study_phev.best_params)
-    print("\nBest value (Average MSE):", study_phev.best_value)
-
-    print("\n study_fuel Best parameters:")
-    print(study_fuel.best_params)
-    print("\nBest value (Average MSE):", study_fuel.best_value)
+    for name, result in results.items():
+        if result:
+            print(f"\n{name} Study Best parameters:")
+            print(result['best_params'])
+            print(f"Best value (Average MSE):", result['best_value'])
+        else:
+            print(f"\n{name} Study failed to complete")
 
 # if __name__ == "__main__":
 #     # 读取数据
