@@ -1,3 +1,32 @@
 eval "$(conda shell.bash hook)"
-
-conda activate cs0 && python tune.py $1> log_$1 2>&1 &
+python tune.py anhui > log_anhui 2>&1;
+python tune.py beijing > log_beijing 2>&1;
+python tune.py chongqing > log_chongqing 2>&1;
+python tune.py fujian > log_fujian 2>&1;
+python tune.py gansu > log_gansu 2>&1;
+python tune.py guangdong > log_guangdong 2>&1;
+python tune.py guangxi > log_guangxi 2>&1;
+python tune.py guizhou > log_guizhou 2>&1;
+python tune.py hainan > log_hainan 2>&1;
+python tune.py hebei > log_hebei 2>&1;
+python tune.py heilongjiang > log_heilongjiang 2>&1;
+python tune.py henan > log_henan 2>&1;
+python tune.py hubei > log_hubei 2>&1;
+python tune.py hunan > log_hunan 2>&1;
+python tune.py jiangsu > log_jiangsu 2>&1;
+python tune.py jiangxi > log_jiangxi 2>&1;
+python tune.py jilin > log_jilin 2>&1;
+python tune.py liaoning > log_liaoning 2>&1;
+python tune.py ningxia > log_ningxia 2>&1;
+python tune.py qinghai > log_qinghai 2>&1;
+python tune.py shaanxi > log_shaanxi 2>&1;
+python tune.py shandong > log_shandong 2>&1;
+python tune.py shanghai > log_shanghai 2>&1;
+python tune.py shanxi > log_shanxi 2>&1;
+python tune.py sichuan > log_sichuan 2>&1;
+python tune.py tianjin > log_tianjin 2>&1;
+python tune.py tibeta > log_tibet 2>&1;
+python tune.py xinjiang > log_xinjiang 2>&1;
+python tune.py yunnan > log_yunnan 2>&1;
+python tune.py zhejiang > log_zhejiang 2>&1;
+python tune.py inner\ mongolia > log_inner_mongolia 2>&1;
