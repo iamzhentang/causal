@@ -1,0 +1,1283 @@
+2024-12-23 20:59:00.173081: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-12-23 20:59:00.173178: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-12-23 20:59:00.176353: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-12-23 20:59:00.189221: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-12-23 20:59:01.477760: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[I 2024-12-23 20:59:03,084] A new study created in memory with name: EVER_STUDY
+[I 2024-12-23 20:59:03,084] A new study created in memory with name: EV_STUDY
+[I 2024-12-23 20:59:03,085] A new study created in memory with name: PHEV_STUDY
+[I 2024-12-23 20:59:03,085] A new study created in memory with name: FUEL_STUDY
+Current PID: 944554
+2024-12-23 20:59:08.801860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 20689 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 D, pci bus id: 0000:28:00.0, compute capability: 8.9
+2024-12-23 20:59:08.845024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 18739 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 D, pci bus id: 0000:28:00.0, compute capability: 8.9
+2024-12-23 20:59:08.847335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 18739 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 D, pci bus id: 0000:28:00.0, compute capability: 8.9
+2024-12-23 20:59:08.851968: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 18739 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090 D, pci bus id: 0000:28:00.0, compute capability: 8.9
+2024-12-23 20:59:11.472534: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8900
+2024-12-23 20:59:11.479627: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8900
+2024-12-23 20:59:13.781353: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8900
+2024-12-23 20:59:14.044086: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8900
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 497ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 439ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 550ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 547ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 527ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 410ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 479ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 480ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 396ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 509ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 469ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 460ms/step
+WARNING:tensorflow:5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1ddca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:53,942 - tensorflow - WARNING - 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1ddca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+WARNING:tensorflow:5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1ccca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:54,588 - tensorflow - WARNING - 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1ccca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 519ms/step
+WARNING:tensorflow:5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1dfca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:54,594 - tensorflow - WARNING - 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1dfca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 448ms/step
+WARNING:tensorflow:6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6ccc4e6ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:54,640 - tensorflow - WARNING - 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6ccc4e6ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 503ms/step
+WARNING:tensorflow:5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1c5ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:54,658 - tensorflow - WARNING - 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6d2c1c5ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 490ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 74ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+WARNING:tensorflow:6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6cd04e5ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:55,213 - tensorflow - WARNING - 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6cd04e5ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+WARNING:tensorflow:6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6ccc4e4ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:55,250 - tensorflow - WARNING - 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6ccc4e4ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 492ms/step
+WARNING:tensorflow:6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6ce84e6ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2024-12-23 20:59:55,353 - tensorflow - WARNING - 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6ce84e6ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 552ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 72ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 75ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 77ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 99ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 105ms/step
+Statistics value = 15.0 p-value = 0.9033203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+Statistics value = 47.0 p-value = 0.0244140625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 484ms/step
+Statistics value = 29.0 p-value = 0.4609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 480ms/step
+Statistics value = 35.0 p-value = 0.24609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 489ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 484ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 505ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 445ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 543ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 410ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 476ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 387ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 483ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 497ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 689ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 400ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 598ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 536ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 438ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 382ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 525ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 88ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 83ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 113ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 111ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 97ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 95ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 112ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 113ms/step
+[I 2024-12-23 21:00:40,580] Trial 0 finished with value: 0.6074086572665124 and parameters: {'n_units_0': 24, 'dropout_1': 0.3, 'run': 3, 'epochs_1': 70, 'epochs_2': 30, 'lr_1': 0.00020511104188433984, 'lr_2': 1.3066739238053272e-05, 'batch_size': 16, 'regularization': 'None'}. Best is trial 0 with value: 0.6074086572665124.
+[I 2024-12-23 21:00:40,598] Trial 0 finished with value: 1.1767186442256983 and parameters: {'n_units_0': 24, 'dropout_1': 0.3, 'run': 3, 'epochs_1': 70, 'epochs_2': 30, 'lr_1': 0.00020511104188433984, 'lr_2': 1.3066739238053272e-05, 'batch_size': 16, 'regularization': 'None'}. Best is trial 0 with value: 1.1767186442256983.
+[I 2024-12-23 21:00:40,652] Trial 0 finished with value: 0.2975429409243542 and parameters: {'n_units_0': 24, 'dropout_1': 0.3, 'run': 3, 'epochs_1': 70, 'epochs_2': 30, 'lr_1': 0.00020511104188433984, 'lr_2': 1.3066739238053272e-05, 'batch_size': 16, 'regularization': 'None'}. Best is trial 0 with value: 0.2975429409243542.
+[I 2024-12-23 21:00:40,700] Trial 0 finished with value: 0.2367637222638485 and parameters: {'n_units_0': 24, 'dropout_1': 0.3, 'run': 3, 'epochs_1': 70, 'epochs_2': 30, 'lr_1': 0.00020511104188433984, 'lr_2': 1.3066739238053272e-05, 'batch_size': 16, 'regularization': 'None'}. Best is trial 0 with value: 0.2367637222638485.
+Statistics value = 31.0 p-value = 0.0390625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+Statistics value = 5.0 p-value = 0.97265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 434ms/step
+Statistics value = 16.0 p-value = 0.62890625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 398ms/step
+Statistics value = 18.0 p-value = 0.52734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 493ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 399ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 670ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 616ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 99ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 100ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 112ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 96ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 162ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+Statistics value = 25.0 p-value = 0.615234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 379ms/step
+Statistics value = 7.0 p-value = 0.986328125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 408ms/step
+Statistics value = 27.0 p-value = 0.5390625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 399ms/step
+Statistics value = 32.0 p-value = 0.34765625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 677ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 381ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 445ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 506ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 97ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 40ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 93ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 113ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 101ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 100ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 98ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 119ms/step
+[I 2024-12-23 21:01:15,475] Trial 1 finished with value: 0.2724803969038317 and parameters: {'n_units_0': 56, 'dropout_1': 0.15000000000000002, 'run': 1, 'epochs_1': 40, 'epochs_2': 40, 'lr_1': 0.0011207606211860567, 'lr_2': 7.309539835912905e-05, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.00023345864076016249, 'reg_alpha_2': 0.0022673986523780395}. Best is trial 0 with value: 0.2367637222638485.
+[I 2024-12-23 21:01:15,482] Trial 1 finished with value: 0.4192217383230159 and parameters: {'n_units_0': 56, 'dropout_1': 0.15000000000000002, 'run': 1, 'epochs_1': 40, 'epochs_2': 40, 'lr_1': 0.0011207606211860567, 'lr_2': 7.309539835912905e-05, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.00023345864076016249, 'reg_alpha_2': 0.0022673986523780395}. Best is trial 0 with value: 0.2975429409243542.
+[I 2024-12-23 21:01:15,598] Trial 1 finished with value: 1.6162787989499832 and parameters: {'n_units_0': 56, 'dropout_1': 0.15000000000000002, 'run': 1, 'epochs_1': 40, 'epochs_2': 40, 'lr_1': 0.0011207606211860567, 'lr_2': 7.309539835912905e-05, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.00023345864076016249, 'reg_alpha_2': 0.0022673986523780395}. Best is trial 0 with value: 1.1767186442256983.
+[I 2024-12-23 21:01:15,645] Trial 1 finished with value: 0.6945923364044213 and parameters: {'n_units_0': 56, 'dropout_1': 0.15000000000000002, 'run': 1, 'epochs_1': 40, 'epochs_2': 40, 'lr_1': 0.0011207606211860567, 'lr_2': 7.309539835912905e-05, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.00023345864076016249, 'reg_alpha_2': 0.0022673986523780395}. Best is trial 0 with value: 0.6074086572665124.
+Statistics value = 20.0 p-value = 0.421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 502ms/step
+Statistics value = 34.0 p-value = 0.01171875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 477ms/step
+Statistics value = 3.0 p-value = 0.98828125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 484ms/step
+Statistics value = 19.0 p-value = 0.47265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 451ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 464ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 559ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 507ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 498ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 424ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 527ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 498ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 528ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 79ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 100ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 109ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 110ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 109ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 100ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 108ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 108ms/step
+Statistics value = 31.0 p-value = 0.384765625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+Statistics value = 7.0 p-value = 0.986328125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+Statistics value = 41.0 p-value = 0.0966796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 452ms/step
+Statistics value = 27.0 p-value = 0.5390625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 448ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 396ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 417ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 384ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 472ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 432ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 567ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 385ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 388ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 460ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 394ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 99ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 98ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 94ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 92ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 75ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 81ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 85ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+[I 2024-12-23 21:02:17,806] Trial 2 finished with value: 0.23391714665713081 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00021930485556643703, 'lr_2': 1.3492834268013232e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0011290133559092666, 'reg_alpha_2': 0.00020914981329035596}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:02:17,858] Trial 2 finished with value: 0.5777166485766146 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00021930485556643703, 'lr_2': 1.3492834268013232e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0011290133559092666, 'reg_alpha_2': 0.00020914981329035596}. Best is trial 2 with value: 0.5777166485766146.
+[I 2024-12-23 21:02:17,874] Trial 2 finished with value: 1.0593185521458317 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00021930485556643703, 'lr_2': 1.3492834268013232e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0011290133559092666, 'reg_alpha_2': 0.00020914981329035596}. Best is trial 2 with value: 1.0593185521458317.
+[I 2024-12-23 21:02:17,882] Trial 2 finished with value: 0.2884382235608452 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00021930485556643703, 'lr_2': 1.3492834268013232e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0011290133559092666, 'reg_alpha_2': 0.00020914981329035596}. Best is trial 2 with value: 0.2884382235608452.
+Statistics value = 33.0 p-value = 0.01953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 534ms/step
+Statistics value = 16.0 p-value = 0.62890625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+Statistics value = 15.0 p-value = 0.6796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+Statistics value = 14.0 p-value = 0.7265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 421ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 488ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 445ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 486ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 489ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 103ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 54ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 97ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 96ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 117ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 111ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 94ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 89ms/step
+Statistics value = 17.0 p-value = 0.8623046875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 481ms/step
+Statistics value = 30.0 p-value = 0.4228515625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+Statistics value = 30.0 p-value = 0.4228515625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 431ms/step
+Statistics value = 32.0 p-value = 0.34765625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 448ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 463ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 437ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 460ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 108ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 92ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 96ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 89ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 97ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 108ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 109ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 115ms/step
+[I 2024-12-23 21:02:55,678] Trial 3 finished with value: 0.27058665602405707 and parameters: {'n_units_0': 8, 'dropout_1': 0.2, 'run': 1, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.0021137059440645744, 'lr_2': 4.201672054372529e-05, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 0.006584106160121612}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:02:55,715] Trial 3 finished with value: 1.7975096148828507 and parameters: {'n_units_0': 8, 'dropout_1': 0.2, 'run': 1, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.0021137059440645744, 'lr_2': 4.201672054372529e-05, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 0.006584106160121612}. Best is trial 2 with value: 1.0593185521458317.
+[I 2024-12-23 21:02:55,748] Trial 3 finished with value: 0.43673954455359676 and parameters: {'n_units_0': 8, 'dropout_1': 0.2, 'run': 1, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.0021137059440645744, 'lr_2': 4.201672054372529e-05, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 0.006584106160121612}. Best is trial 2 with value: 0.2884382235608452.
+[I 2024-12-23 21:02:55,753] Trial 3 finished with value: 0.6506522525001852 and parameters: {'n_units_0': 8, 'dropout_1': 0.2, 'run': 1, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.0021137059440645744, 'lr_2': 4.201672054372529e-05, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 0.006584106160121612}. Best is trial 2 with value: 0.5777166485766146.
+Statistics value = 20.0 p-value = 0.421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 437ms/step
+Statistics value = 34.0 p-value = 0.01171875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 413ms/step
+Statistics value = 5.0 p-value = 0.97265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 475ms/step
+Statistics value = 20.0 p-value = 0.421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 451ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 425ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 423ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 419ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 437ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 467ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 423ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 428ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 500ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 432ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 445ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 438ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 461ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 425ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 437ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 604ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 88ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 92ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 90ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 112ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 80ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 85ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+Statistics value = 27.0 p-value = 0.5390625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 448ms/step
+Statistics value = 29.0 p-value = 0.4609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+Statistics value = 48.0 p-value = 0.0185546875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 476ms/step
+Statistics value = 46.0 p-value = 0.0322265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 527ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 475ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 447ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 411ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 396ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 446ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 381ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 395ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 418ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 510ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 576ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 593ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 780ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 571ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 520ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 522ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 540ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 81ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 95ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 109ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 83ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 85ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 91ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+[I 2024-12-23 21:04:14,956] Trial 4 finished with value: 0.29916263372215035 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 30, 'epochs_2': 30, 'lr_1': 0.00012315571723666037, 'lr_2': 4.473636174621264e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.00042470585622618684}. Best is trial 2 with value: 0.2884382235608452.
+[I 2024-12-23 21:04:14,959] Trial 4 finished with value: 1.1702576470347592 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 30, 'epochs_2': 30, 'lr_1': 0.00012315571723666037, 'lr_2': 4.473636174621264e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.00042470585622618684}. Best is trial 2 with value: 1.0593185521458317.
+[I 2024-12-23 21:04:14,976] Trial 4 finished with value: 0.5592867591529402 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 30, 'epochs_2': 30, 'lr_1': 0.00012315571723666037, 'lr_2': 4.473636174621264e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.00042470585622618684}. Best is trial 4 with value: 0.5592867591529402.
+[I 2024-12-23 21:04:15,070] Trial 4 finished with value: 0.23611703199045458 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 30, 'epochs_2': 30, 'lr_1': 0.00012315571723666037, 'lr_2': 4.473636174621264e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.00042470585622618684}. Best is trial 2 with value: 0.23391714665713081.
+Statistics value = 18.0 p-value = 0.52734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 547ms/step
+Statistics value = 24.0 p-value = 0.23046875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 492ms/step
+Statistics value = 13.0 p-value = 0.76953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+Statistics value = 16.0 p-value = 0.62890625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 481ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 360ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 397ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 388ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 102ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 99ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 89ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 82ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 82ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 98ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 95ms/step
+Statistics value = 24.0 p-value = 0.65234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 527ms/step
+Statistics value = 49.0 p-value = 0.013671875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 602ms/step
+Statistics value = 33.0 p-value = 0.3125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 455ms/step
+Statistics value = 32.0 p-value = 0.34765625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 591ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 511ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 480ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 436ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 106ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 92ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 89ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 86ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 102ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 172ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 109ms/step
+[I 2024-12-23 21:04:55,848] Trial 5 finished with value: 0.7101151980366638 and parameters: {'n_units_0': 12, 'dropout_1': 0.3, 'run': 1, 'epochs_1': 100, 'epochs_2': 80, 'lr_1': 0.00024970737145052745, 'lr_2': 1.0257563974185649e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 0.0001189589673755355}. Best is trial 4 with value: 0.5592867591529402.
+[I 2024-12-23 21:04:55,883] Trial 5 finished with value: 0.31647383645187566 and parameters: {'n_units_0': 12, 'dropout_1': 0.3, 'run': 1, 'epochs_1': 100, 'epochs_2': 80, 'lr_1': 0.00024970737145052745, 'lr_2': 1.0257563974185649e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 0.0001189589673755355}. Best is trial 2 with value: 0.2884382235608452.
+[I 2024-12-23 21:04:55,893] Trial 5 finished with value: 1.2944382313450196 and parameters: {'n_units_0': 12, 'dropout_1': 0.3, 'run': 1, 'epochs_1': 100, 'epochs_2': 80, 'lr_1': 0.00024970737145052745, 'lr_2': 1.0257563974185649e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 0.0001189589673755355}. Best is trial 2 with value: 1.0593185521458317.
+[I 2024-12-23 21:04:55,896] Trial 5 finished with value: 0.24746211228528053 and parameters: {'n_units_0': 12, 'dropout_1': 0.3, 'run': 1, 'epochs_1': 100, 'epochs_2': 80, 'lr_1': 0.00024970737145052745, 'lr_2': 1.0257563974185649e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 0.0001189589673755355}. Best is trial 2 with value: 0.23391714665713081.
+Statistics value = 6.0 p-value = 0.9609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+Statistics value = 20.0 p-value = 0.421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+Statistics value = 5.0 p-value = 0.97265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 501ms/step
+Statistics value = 20.0 p-value = 0.421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 502ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 418ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 452ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 470ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 412ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 418ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 114ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 71ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 75ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 80ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+Statistics value = 49.0 p-value = 0.013671875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 478ms/step
+Statistics value = 40.0 p-value = 0.1162109375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 480ms/step
+Statistics value = 19.0 p-value = 0.8125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 481ms/step
+Statistics value = 3.0 p-value = 0.9970703125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 496ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 377ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 380ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 454ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 392ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 393ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 434ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 411ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 400ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 61ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 64ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 68ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 73ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 100ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 70ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 90ms/step
+[I 2024-12-23 21:05:49,221] Trial 6 finished with value: 1.1491010606740506 and parameters: {'n_units_0': 8, 'dropout_1': 0.3, 'run': 2, 'epochs_1': 50, 'epochs_2': 20, 'lr_1': 0.0004187594718900631, 'lr_2': 4.4706085467784903e-05, 'batch_size': 16, 'regularization': 'l1', 'reg_alpha_1': 0.0013795402040204172}. Best is trial 2 with value: 1.0593185521458317.
+[I 2024-12-23 21:05:49,266] Trial 6 finished with value: 0.3124747182765458 and parameters: {'n_units_0': 8, 'dropout_1': 0.3, 'run': 2, 'epochs_1': 50, 'epochs_2': 20, 'lr_1': 0.0004187594718900631, 'lr_2': 4.4706085467784903e-05, 'batch_size': 16, 'regularization': 'l1', 'reg_alpha_1': 0.0013795402040204172}. Best is trial 2 with value: 0.2884382235608452.
+[I 2024-12-23 21:05:49,276] Trial 6 finished with value: 0.2385016570607189 and parameters: {'n_units_0': 8, 'dropout_1': 0.3, 'run': 2, 'epochs_1': 50, 'epochs_2': 20, 'lr_1': 0.0004187594718900631, 'lr_2': 4.4706085467784903e-05, 'batch_size': 16, 'regularization': 'l1', 'reg_alpha_1': 0.0013795402040204172}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:05:49,366] Trial 6 finished with value: 0.6526572110095014 and parameters: {'n_units_0': 8, 'dropout_1': 0.3, 'run': 2, 'epochs_1': 50, 'epochs_2': 20, 'lr_1': 0.0004187594718900631, 'lr_2': 4.4706085467784903e-05, 'batch_size': 16, 'regularization': 'l1', 'reg_alpha_1': 0.0013795402040204172}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 19.0 p-value = 0.47265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 503ms/step
+Statistics value = 13.0 p-value = 0.76953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+Statistics value = 4.0 p-value = 0.98046875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 441ms/step
+Statistics value = 7.0 p-value = 0.9453125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 460ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 493ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 447ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 476ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 545ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 464ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 562ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 511ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 459ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 452ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 484ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 532ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 481ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 500ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 497ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 500ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 551ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 515ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 102ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 104ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 88ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 97ms/step
+Statistics value = 34.0 p-value = 0.2783203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 466ms/step
+Statistics value = 28.0 p-value = 0.5
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 464ms/step
+Statistics value = 20.0 p-value = 0.7841796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 473ms/step
+Statistics value = 40.0 p-value = 0.1162109375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 466ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 465ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 414ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 447ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 442ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 500ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 766ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 463ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 555ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 412ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 393ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 443ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 473ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 389ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 405ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 464ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 441ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 81ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 84ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 86ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 83ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 75ms/step
+[I 2024-12-23 21:07:43,247] Trial 7 finished with value: 1.583841480241723 and parameters: {'n_units_0': 52, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 60, 'epochs_2': 60, 'lr_1': 0.0007162786999897341, 'lr_2': 1.1241862095793047e-05, 'batch_size': 8, 'regularization': 'l1', 'reg_alpha_1': 0.005280796376895365}. Best is trial 2 with value: 1.0593185521458317.
+[I 2024-12-23 21:07:43,257] Trial 7 finished with value: 0.2646553933073459 and parameters: {'n_units_0': 52, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 60, 'epochs_2': 60, 'lr_1': 0.0007162786999897341, 'lr_2': 1.1241862095793047e-05, 'batch_size': 8, 'regularization': 'l1', 'reg_alpha_1': 0.005280796376895365}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:07:43,278] Trial 7 finished with value: 0.4099377914018674 and parameters: {'n_units_0': 52, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 60, 'epochs_2': 60, 'lr_1': 0.0007162786999897341, 'lr_2': 1.1241862095793047e-05, 'batch_size': 8, 'regularization': 'l1', 'reg_alpha_1': 0.005280796376895365}. Best is trial 2 with value: 0.2884382235608452.
+[I 2024-12-23 21:07:43,438] Trial 7 finished with value: 0.6671412899017879 and parameters: {'n_units_0': 52, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 60, 'epochs_2': 60, 'lr_1': 0.0007162786999897341, 'lr_2': 1.1241862095793047e-05, 'batch_size': 8, 'regularization': 'l1', 'reg_alpha_1': 0.005280796376895365}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 6.0 p-value = 0.9609375
+1/1 [==============================] - ETA: 0sStatistics value = 19.0 p-value = 0.47265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 437ms/step
+1/1 [==============================] - 0s 427ms/step
+Statistics value = 34.0 p-value = 0.01171875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 448ms/step
+Statistics value = 23.0 p-value = 0.2734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 462ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 419ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 461ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 394ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 372ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 431ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 385ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 388ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 376ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 441ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 78ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 51ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 100ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 121ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 59ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 118ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 98ms/step
+Statistics value = 19.0 p-value = 0.8125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 487ms/step
+Statistics value = 25.0 p-value = 0.615234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 536ms/step
+Statistics value = 27.0 p-value = 0.5390625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 452ms/step
+Statistics value = 44.0 p-value = 0.052734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 441ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 393ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 390ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 394ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 476ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 461ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 503ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 473ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 509ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 425ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 408ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 504ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 391ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 459ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 504ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 73ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 90ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 110ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 95ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 91ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 89ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 93ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+[I 2024-12-23 21:09:04,453] Trial 8 finished with value: 0.2384511407482182 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 40, 'epochs_2': 20, 'lr_1': 0.0003797544798678418, 'lr_2': 2.101079931010355e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 3.6283583803549155e-05}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:09:04,554] Trial 8 finished with value: 1.0352273116668622 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 40, 'epochs_2': 20, 'lr_1': 0.0003797544798678418, 'lr_2': 2.101079931010355e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 3.6283583803549155e-05}. Best is trial 8 with value: 1.0352273116668622.
+[I 2024-12-23 21:09:04,614] Trial 8 finished with value: 0.5644499301599126 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 40, 'epochs_2': 20, 'lr_1': 0.0003797544798678418, 'lr_2': 2.101079931010355e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 3.6283583803549155e-05}. Best is trial 4 with value: 0.5592867591529402.
+[I 2024-12-23 21:09:04,993] Trial 8 finished with value: 0.2969077542934843 and parameters: {'n_units_0': 16, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 40, 'epochs_2': 20, 'lr_1': 0.0003797544798678418, 'lr_2': 2.101079931010355e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 3.6283583803549155e-05}. Best is trial 2 with value: 0.2884382235608452.
+Statistics value = 8.0 p-value = 0.92578125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 465ms/step
+Statistics value = 19.0 p-value = 0.47265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 479ms/step
+Statistics value = 22.0 p-value = 0.3203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 460ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 400ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 395ms/step
+Statistics value = 15.0 p-value = 0.6796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 419ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 459ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 419ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 515ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 423ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 401ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 436ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 436ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 476ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 343ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 418ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 432ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 55ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 362ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 387ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 34ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 394ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 392ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 380ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 78ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 58ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 38ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 30ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 78ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 83ms/step
+Statistics value = 26.0 p-value = 0.5771484375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 346ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 417ms/step
+Statistics value = 22.0 p-value = 0.7216796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 360ms/step
+Statistics value = 34.0 p-value = 0.2783203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 389ms/step
+Statistics value = 41.0 p-value = 0.0966796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 324ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 368ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 366ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 370ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 359ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 399ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 336ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 351ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 379ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 344ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 353ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 381ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 412ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 333ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 30ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 34ms/step
+[I 2024-12-23 21:10:33,608] Trial 9 finished with value: 0.34257681952392155 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.00016599837974449222, 'lr_2': 2.8567374298471872e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.000178744632562384}. Best is trial 2 with value: 0.2884382235608452.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 340ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 388ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 389ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 314ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 334ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 361ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 75ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 36ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 76ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 66ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 70ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 69ms/step
+[I 2024-12-23 21:10:41,560] Trial 9 finished with value: 1.4541010043733915 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.00016599837974449222, 'lr_2': 2.8567374298471872e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.000178744632562384}. Best is trial 8 with value: 1.0352273116668622.
+[I 2024-12-23 21:10:41,568] Trial 9 finished with value: 0.6637608355835589 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.00016599837974449222, 'lr_2': 2.8567374298471872e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.000178744632562384}. Best is trial 4 with value: 0.5592867591529402.
+[I 2024-12-23 21:10:41,579] Trial 9 finished with value: 0.24352009833056115 and parameters: {'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 100, 'epochs_2': 40, 'lr_1': 0.00016599837974449222, 'lr_2': 2.8567374298471872e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.000178744632562384}. Best is trial 2 with value: 0.23391714665713081.
+Statistics value = 22.0 p-value = 0.3203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 363ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 350ms/step
+Statistics value = 23.0 p-value = 0.2734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 392ms/step
+Statistics value = 33.0 p-value = 0.01953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 376ms/step
+Statistics value = 11.0 p-value = 0.84375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 392ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 336ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 323ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 394ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 351ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 347ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 36ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 31ms/step
+Statistics value = 18.0 p-value = 0.8388671875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 355ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 372ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 380ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 366ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 361ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 31ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 382ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 31ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 51ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 32ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 414ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 32ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 352ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 330ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 34ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 66ms/step
+[I 2024-12-23 21:11:24,472] Trial 10 finished with value: 0.6876284513318385 and parameters: {'n_units_0': 36, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 100, 'lr_1': 0.006536264082965737, 'lr_2': 0.0002888908524619867, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 1.0887633888418048e-05, 'reg_alpha_2': 3.242310994927044e-05}. Best is trial 2 with value: 0.2884382235608452.
+Statistics value = 25.0 p-value = 0.615234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 363ms/step
+Statistics value = 11.0 p-value = 0.9580078125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+Statistics value = 9.0 p-value = 0.9755859375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 372ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 375ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 503ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 353ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 397ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 372ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 377ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 57ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 34ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 35ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 31ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 30ms/step
+Statistics value = 19.0 p-value = 0.47265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 580ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 76ms/step
+[I 2024-12-23 21:11:38,461] Trial 10 finished with value: 0.5614757039500764 and parameters: {'n_units_0': 44, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 90, 'lr_1': 0.006536264082965737, 'lr_2': 0.0002888908524619867, 'batch_size': 12, 'regularization': 'None'}. Best is trial 4 with value: 0.5592867591529402.
+[I 2024-12-23 21:11:38,461] Trial 10 finished with value: 2.1296659545617493 and parameters: {'n_units_0': 36, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 90, 'lr_1': 0.006536264082965737, 'lr_2': 0.0003400662576138287, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 1.095292710677685e-05}. Best is trial 8 with value: 1.0352273116668622.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 494ms/step
+[I 2024-12-23 21:11:38,681] Trial 10 finished with value: 0.27080195271468643 and parameters: {'n_units_0': 36, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 100, 'lr_1': 0.006536264082965737, 'lr_2': 0.0002888908524619867, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 1.0887633888418048e-05, 'reg_alpha_2': 3.242310994927044e-05}. Best is trial 2 with value: 0.23391714665713081.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 341ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 310ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 28ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 31ms/step
+Statistics value = 29.0 p-value = 0.07421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 369ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 343ms/step
+Statistics value = 3.0 p-value = 0.98828125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 343ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 335ms/step
+Statistics value = 6.0 p-value = 0.9609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 365ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 329ms/step
+Statistics value = 30.0 p-value = 0.4228515625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 333ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 340ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 362ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 273ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 36ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 28ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 344ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 355ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 39ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 40ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 352ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 318ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 37ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 439ms/step
+[I 2024-12-23 21:12:10,894] Trial 11 finished with value: 0.35731097252610033 and parameters: {'n_units_0': 24, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00045935010475418625, 'lr_2': 0.0001972411037763283, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 2.2049656979066447e-05, 'reg_alpha_2': 0.00011712111399381304}. Best is trial 2 with value: 0.2884382235608452.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 455ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 59ms/step
+Statistics value = 48.0 p-value = 0.0185546875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 431ms/step
+Statistics value = 46.0 p-value = 0.0322265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 464ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+Statistics value = 22.0 p-value = 0.3203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+Statistics value = 25.0 p-value = 0.615234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 430ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 626ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 483ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 454ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 78ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 81ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 430ms/step
+[I 2024-12-23 21:12:29,174] Trial 11 finished with value: 0.2342640940489167 and parameters: {'n_units_0': 40, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.0001055467102927026, 'lr_2': 0.000214529409721754, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.001068853786687612, 'reg_alpha_2': 0.00011712111399381304}. Best is trial 2 with value: 0.23391714665713081.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 69ms/step
+[I 2024-12-23 21:12:30,743] Trial 11 finished with value: 1.3990820331120686 and parameters: {'n_units_0': 24, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00043308435993796163, 'lr_2': 0.00023976227274240743, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 2.1201617169835476e-05, 'reg_alpha_2': 3.292936455871085e-05}. Best is trial 8 with value: 1.0352273116668622.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 440ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 381ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 65ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 508ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 475ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 61ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 71ms/step
+Statistics value = 32.0 p-value = 0.02734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 483ms/step
+[I 2024-12-23 21:12:44,373] Trial 11 finished with value: 0.5674220724525 and parameters: {'n_units_0': 44, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 100, 'lr_1': 0.008234579469570416, 'lr_2': 0.0003230674617349937, 'batch_size': 12, 'regularization': 'None'}. Best is trial 4 with value: 0.5592867591529402.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 487ms/step
+Statistics value = 20.0 p-value = 0.421875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 530ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 385ms/step
+Statistics value = 30.0 p-value = 0.4228515625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 465ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 451ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 424ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 68ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 382ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 457ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 73ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+Statistics value = 6.0 p-value = 0.9609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 445ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 487ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 486ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 57ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+[I 2024-12-23 21:13:07,994] Trial 12 finished with value: 0.4162768161390856 and parameters: {'n_units_0': 20, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 40, 'epochs_2': 60, 'lr_1': 0.001518064075631007, 'lr_2': 0.0008607419445086135, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 4.242944391550308e-05}. Best is trial 2 with value: 0.2884382235608452.
+Statistics value = 47.0 p-value = 0.0244140625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 515ms/step
+Statistics value = 50.0 p-value = 0.009765625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 437ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 422ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 460ms/step
+Statistics value = 17.0 p-value = 0.578125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 431ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 455ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 422ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 422ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 439ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 82ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 79ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 54ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 73ms/step
+[I 2024-12-23 21:13:27,543] Trial 12 finished with value: 0.2356035541485752 and parameters: {'n_units_0': 40, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00010469695725470682, 'lr_2': 0.00020046179107204468, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.001339742192829721, 'reg_alpha_2': 0.0001618399410450636}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:13:28,195] Trial 12 finished with value: 1.6058999806977772 and parameters: {'n_units_0': 20, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 40, 'epochs_2': 60, 'lr_1': 0.00010482754329904023, 'lr_2': 0.0009818226878189125, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 4.496997295974262e-05, 'reg_alpha_2': 0.0001781450769024047}. Best is trial 8 with value: 1.0352273116668622.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 473ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 61ms/step
+Statistics value = 33.0 p-value = 0.3125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+Statistics value = 33.0 p-value = 0.01953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 439ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 441ms/step
+Statistics value = 12.0 p-value = 0.80859375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 424ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 434ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+[I 2024-12-23 21:13:58,388] Trial 12 finished with value: 0.5704360036869109 and parameters: {'n_units_0': 40, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 100, 'lr_1': 0.006951121708703878, 'lr_2': 0.0002565002693018958, 'batch_size': 12, 'regularization': 'None'}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 30.0 p-value = 0.4228515625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 491ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 425ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 450ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 59ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 479ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+Statistics value = 6.0 p-value = 0.9609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 468ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 401ms/step
+[I 2024-12-23 21:14:18,152] Trial 13 finished with value: 0.3662476568685894 and parameters: {'n_units_0': 40, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 50, 'epochs_2': 90, 'lr_1': 0.0004044758550598607, 'lr_2': 2.0020914470861683e-05, 'batch_size': 16, 'regularization': 'None'}. Best is trial 2 with value: 0.2884382235608452.
+Statistics value = 28.0 p-value = 0.5
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 452ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+Statistics value = 8.0 p-value = 0.9814453125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 482ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 413ms/step
+Statistics value = 21.0 p-value = 0.37109375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 443ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 413ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 450ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 55ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 419ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+[I 2024-12-23 21:14:39,644] Trial 13 finished with value: 1.4400586322609399 and parameters: {'n_units_0': 40, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 50, 'epochs_2': 100, 'lr_1': 0.0004044758550598607, 'lr_2': 2.0020914470861683e-05, 'batch_size': 16, 'regularization': 'None'}. Best is trial 8 with value: 1.0352273116668622.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 457ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 456ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 421ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 62ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 70ms/step
+[I 2024-12-23 21:14:49,182] Trial 13 finished with value: 0.26785340289531273 and parameters: {'n_units_0': 24, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 50, 'epochs_2': 80, 'lr_1': 0.00039226124666588865, 'lr_2': 0.0009818247569037461, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0010400758145997894, 'reg_alpha_2': 0.00024385253899402906}. Best is trial 2 with value: 0.23391714665713081.
+Statistics value = 29.0 p-value = 0.4609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 481ms/step
+Statistics value = 34.0 p-value = 0.01171875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 396ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 400ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 9s 9s/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 382ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+Statistics value = 5.0 p-value = 0.97265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 472ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 385ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 398ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 424ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 63ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+Statistics value = 29.0 p-value = 0.4609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 489ms/step
+[I 2024-12-23 21:15:13,863] Trial 13 finished with value: 0.5671622954558706 and parameters: {'n_units_0': 64, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 80, 'epochs_2': 80, 'lr_1': 0.004021019349138742, 'lr_2': 0.0008106561872514704, 'batch_size': 12, 'regularization': 'None'}. Best is trial 4 with value: 0.5592867591529402.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 417ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 402ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 55ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 443ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 447ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 62ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 430ms/step
+Statistics value = 49.0 p-value = 0.013671875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 491ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 475ms/step
+Statistics value = 7.0 p-value = 0.9453125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 478ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 538ms/step
+Statistics value = 38.0 p-value = 0.1611328125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 504ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 473ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 436ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 413ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 51ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 489ms/step
+[I 2024-12-23 21:15:44,278] Trial 14 finished with value: 0.2940052784482713 and parameters: {'n_units_0': 16, 'dropout_1': 0.15000000000000002, 'run': 3, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.0001096874927666045, 'lr_2': 2.1365437643648277e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.001068042735809095, 'reg_alpha_2': 0.0009784074393024533}. Best is trial 2 with value: 0.2884382235608452.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 411ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+[I 2024-12-23 21:15:45,642] Trial 14 finished with value: 0.2368882177859516 and parameters: {'n_units_0': 48, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 60, 'lr_1': 0.00010388445237401994, 'lr_2': 0.0002109246956048817, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.00310668928285557, 'reg_alpha_2': 4.813270990765419e-05}. Best is trial 2 with value: 0.23391714665713081.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 446ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+Statistics value = 18.0 p-value = 0.52734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 432ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 389ms/step
+Statistics value = 13.0 p-value = 0.76953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 450ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 498ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 450ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 562ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 475ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 51ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 427ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 61ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 44ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 58ms/step
+[I 2024-12-23 21:16:06,204] Trial 14 finished with value: 1.2593972405673106 and parameters: {'n_units_0': 16, 'dropout_1': 0.15000000000000002, 'run': 3, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.0014425540650734175, 'lr_2': 2.1365437643648277e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.001068042735809095, 'reg_alpha_2': 0.0007708764500743201}. Best is trial 8 with value: 1.0352273116668622.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 432ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 430ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 87ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+Statistics value = 22.0 p-value = 0.3203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 436ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 509ms/step
+Statistics value = 25.0 p-value = 0.615234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 498ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 62ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 39ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+Statistics value = 26.0 p-value = 0.5771484375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 413ms/step
+Statistics value = 7.0 p-value = 0.986328125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 489ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 398ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 72ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 441ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 431ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 485ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 425ms/step
+Statistics value = 49.0 p-value = 0.013671875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 468ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 78ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 471ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 62ms/step
+[I 2024-12-23 21:16:51,000] Trial 15 finished with value: 0.27486889449146795 and parameters: {'n_units_0': 28, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 40, 'epochs_2': 100, 'lr_1': 0.002062009247601101, 'lr_2': 0.0005304347741682052, 'batch_size': 12, 'regularization': 'None'}. Best is trial 2 with value: 0.23391714665713081.
+[I 2024-12-23 21:16:51,336] Trial 15 finished with value: 0.28328449592565075 and parameters: {'n_units_0': 4, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.0001012145355811484, 'lr_2': 9.552335254144706e-05, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0013230718692473172, 'reg_alpha_2': 0.0009990953045534545}. Best is trial 15 with value: 0.28328449592565075.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 504ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 434ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 60ms/step
+[I 2024-12-23 21:16:57,985] Trial 14 finished with value: 0.6741881978264277 and parameters: {'n_units_0': 32, 'dropout_1': 0.25, 'run': 3, 'epochs_1': 60, 'epochs_2': 60, 'lr_1': 0.0020959109505026595, 'lr_2': 0.00015639193301222808, 'batch_size': 8, 'regularization': 'l1', 'reg_alpha_1': 1.3665554597014836e-05}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 5.0 p-value = 0.97265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 421ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 448ms/step
+Statistics value = 15.0 p-value = 0.6796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 417ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 541ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 456ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 456ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 71ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 67ms/step
+[I 2024-12-23 21:17:13,210] Trial 15 finished with value: 1.4215524377687245 and parameters: {'n_units_0': 4, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 50, 'epochs_2': 50, 'lr_1': 0.0039634864398424095, 'lr_2': 0.00013336003906909693, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 0.0013230718692473172}. Best is trial 8 with value: 1.0352273116668622.
+Statistics value = 19.0 p-value = 0.47265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 456ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 454ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 454ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 421ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 469ms/step
+Statistics value = 21.0 p-value = 0.37109375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 442ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 481ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 459ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 383ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 58ms/step
+Statistics value = 20.0 p-value = 0.7841796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 559ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 384ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 470ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 467ms/step
+Statistics value = 28.0 p-value = 0.5
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 458ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 397ms/step
+Statistics value = 4.0 p-value = 0.9951171875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 438ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 462ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 475ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 53ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+[I 2024-12-23 21:17:57,258] Trial 16 finished with value: 0.3951276439255844 and parameters: {'n_units_0': 4, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 80, 'epochs_2': 60, 'lr_1': 0.0031184049060234103, 'lr_2': 0.00017538057383814667, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0016876638198497185, 'reg_alpha_2': 0.0002879242897444343}. Best is trial 15 with value: 0.28328449592565075.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 407ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 490ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 66ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 55ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 421ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 412ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+[I 2024-12-23 21:18:04,796] Trial 15 finished with value: 0.6343367930118577 and parameters: {'n_units_0': 44, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 70, 'epochs_2': 80, 'lr_1': 0.0032104240317229835, 'lr_2': 0.0008099522355017243, 'batch_size': 12, 'regularization': 'None'}. Best is trial 4 with value: 0.5592867591529402.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 61ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 57ms/step
+[I 2024-12-23 21:18:09,483] Trial 16 finished with value: 0.27186782562704004 and parameters: {'n_units_0': 44, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 80, 'epochs_2': 80, 'lr_1': 0.0007776015220273289, 'lr_2': 0.00014040382358975986, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0006860641350514071, 'reg_alpha_2': 0.002020012485413424}. Best is trial 2 with value: 0.23391714665713081.
+Statistics value = 41.0 p-value = 0.0966796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 446ms/step
+Statistics value = 25.0 p-value = 0.19140625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 409ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+Statistics value = 3.0 p-value = 0.98828125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 431ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 446ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 53ms/step
+Statistics value = 7.0 p-value = 0.9453125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 9s 9s/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 533ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 451ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 418ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 401ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 477ms/step
+Statistics value = 33.0 p-value = 0.3125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 470ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 393ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 57ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 435ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 80ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 70ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 55ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 447ms/step
+[I 2024-12-23 21:18:44,074] Trial 17 finished with value: 0.2355613916976575 and parameters: {'n_units_0': 32, 'dropout_1': 0.25, 'run': 1, 'epochs_1': 50, 'epochs_2': 60, 'lr_1': 0.0002472996232313259, 'lr_2': 7.234696033957651e-05, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.00253373934153392, 'reg_alpha_2': 0.0005143941337094293}. Best is trial 2 with value: 0.23391714665713081.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 467ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 51ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 57ms/step
+[I 2024-12-23 21:18:45,670] Trial 16 finished with value: 1.3718036692383966 and parameters: {'n_units_0': 28, 'dropout_1': 0.1, 'run': 3, 'epochs_1': 40, 'epochs_2': 80, 'lr_1': 0.0002993320271323778, 'lr_2': 8.071797454596734e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 6.386551315546487e-05, 'reg_alpha_2': 0.009464154147879048}. Best is trial 8 with value: 1.0352273116668622.
+Statistics value = 30.0 p-value = 0.4228515625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 423ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 446ms/step
+Statistics value = 38.0 p-value = 0.1611328125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 447ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 454ms/step
+Statistics value = 32.0 p-value = 0.02734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 53ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+Statistics value = 16.0 p-value = 0.62890625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 577ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 397ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 56ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 472ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 453ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 74ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 61ms/step
+[I 2024-12-23 21:19:07,321] Trial 16 finished with value: 0.5868341071378751 and parameters: {'n_units_0': 52, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 50, 'lr_1': 0.00010474873867657249, 'lr_2': 9.818268155784353e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.00077117119838498}. Best is trial 4 with value: 0.5592867591529402.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 415ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 410ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+[I 2024-12-23 21:19:09,196] Trial 17 finished with value: 0.4105386472710083 and parameters: {'n_units_0': 28, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 50, 'epochs_2': 80, 'lr_1': 0.0002096513968123572, 'lr_2': 0.0005743795281920736, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0006675583326067126, 'reg_alpha_2': 0.009415244195298792}. Best is trial 15 with value: 0.28328449592565075.
+Statistics value = 26.0 p-value = 0.5771484375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 493ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 400ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 71ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+[I 2024-12-23 21:19:13,614] Trial 17 finished with value: 1.6017213683763303 and parameters: {'n_units_0': 44, 'dropout_1': 0.15000000000000002, 'run': 1, 'epochs_1': 70, 'epochs_2': 20, 'lr_1': 0.0007228270094869208, 'lr_2': 1.8938984110238145e-05, 'batch_size': 12, 'regularization': 'l2', 'reg_alpha_1': 0.0005918226679703409}. Best is trial 8 with value: 1.0352273116668622.
+Statistics value = 8.0 p-value = 0.9814453125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 428ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 444ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 59ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 50ms/step
+[I 2024-12-23 21:19:17,356] Trial 18 finished with value: 0.27079984386115313 and parameters: {'n_units_0': 20, 'dropout_1': 0.1, 'run': 1, 'epochs_1': 60, 'epochs_2': 70, 'lr_1': 0.006378669758642141, 'lr_2': 0.0003912541234694178, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 9.041235632991123e-05, 'reg_alpha_2': 9.085817036149874e-05}. Best is trial 2 with value: 0.23391714665713081.
+Statistics value = 18.0 p-value = 0.52734375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 387ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 57ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 47ms/step
+Statistics value = 15.0 p-value = 0.6796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 439ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 494ms/step
+Statistics value = 35.0 p-value = 0.0078125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 427ms/step
+Statistics value = 6.0 p-value = 0.9609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 616ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 408ms/step
+Statistics value = 22.0 p-value = 0.7216796875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 443ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 427ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 58ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+[I 2024-12-23 21:19:39,702] Trial 18 finished with value: 0.39792282888284225 and parameters: {'n_units_0': 4, 'dropout_1': 0.25, 'run': 1, 'epochs_1': 60, 'epochs_2': 50, 'lr_1': 0.00010906199228628003, 'lr_2': 9.40343880083192e-05, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0033165513819695533, 'reg_alpha_2': 0.0008030532334567729}. Best is trial 15 with value: 0.28328449592565075.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 432ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 62ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 63ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 465ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 396ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 449ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 373ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+Statistics value = 25.0 p-value = 0.19140625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 506ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 394ms/step
+Statistics value = 25.0 p-value = 0.615234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 412ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 413ms/step
+Statistics value = 18.0 p-value = 0.8388671875
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 396ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 422ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 456ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 436ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 49ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 54ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 426ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 382ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 71ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 429ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 408ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 55ms/step
+[I 2024-12-23 21:20:16,201] Trial 19 finished with value: 0.2811928633005707 and parameters: {'n_units_0': 4, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 30, 'epochs_2': 90, 'lr_1': 0.000171679715680756, 'lr_2': 0.00011170995439574653, 'batch_size': 12, 'regularization': 'None'}. Best is trial 2 with value: 0.23391714665713081.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 450ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 398ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 72ms/step
+[I 2024-12-23 21:20:17,974] Trial 18 finished with value: 1.4619362421430373 and parameters: {'n_units_0': 32, 'dropout_1': 0.25, 'run': 2, 'epochs_1': 60, 'epochs_2': 50, 'lr_1': 0.0006859748044625673, 'lr_2': 3.011658968299996e-05, 'batch_size': 8, 'regularization': 'None'}. Best is trial 8 with value: 1.0352273116668622.
+Statistics value = 26.0 p-value = 0.5771484375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 406ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 395ms/step
+Statistics value = 29.0 p-value = 0.4609375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 417ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 414ms/step
+Statistics value = 35.0 p-value = 0.0078125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 439ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 395ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 428ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 362ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 10s 10s/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 38ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 36ms/step
+[I 2024-12-23 21:20:49,881] Trial 19 finished with value: 0.4088640199829634 and parameters: {'n_units_0': 48, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 30, 'epochs_2': 100, 'lr_1': 0.0002703296767799069, 'lr_2': 0.00040532478644222816, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0025958790509482163, 'reg_alpha_2': 9.404658811960976e-05}. Best is trial 15 with value: 0.28328449592565075.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 400ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 361ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 35ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 33ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 438ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 403ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 56ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 40ms/step
+[I 2024-12-23 21:21:08,359] Trial 17 finished with value: 0.6593035871017645 and parameters: {'n_units_0': 32, 'dropout_1': 0.1, 'run': 3, 'epochs_1': 90, 'epochs_2': 90, 'lr_1': 0.001404038235897598, 'lr_2': 0.00039678579230425034, 'batch_size': 8, 'regularization': 'l1_l2', 'reg_alpha_1': 5.165245440136452e-05, 'reg_alpha_2': 1.0049202757123853e-05}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 39.0 p-value = 0.1376953125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 434ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 417ms/step
+Statistics value = 14.0 p-value = 0.7265625
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 411ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 387ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 45ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 40ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 456ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 384ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 46ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+[I 2024-12-23 21:21:28,292] Trial 19 finished with value: 1.6466493164856655 and parameters: {'n_units_0': 16, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 40, 'epochs_2': 100, 'lr_1': 0.0020629235454753137, 'lr_2': 1.5992447605146834e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0034190982235058434, 'reg_alpha_2': 1.6673630586160296e-05}. Best is trial 8 with value: 1.0352273116668622.
+Statistics value = 34.0 p-value = 0.2783203125
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 398ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 404ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 42ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 41ms/step
+[I 2024-12-23 21:21:39,357] Trial 18 finished with value: 0.6744913046219937 and parameters: {'n_units_0': 48, 'dropout_1': 0.25, 'run': 1, 'epochs_1': 40, 'epochs_2': 50, 'lr_1': 0.0006429002184975098, 'lr_2': 6.477049011063906e-05, 'batch_size': 8, 'regularization': 'None'}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 21.0 p-value = 0.37109375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 420ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 433ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 421ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 378ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 48ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 40ms/step
+Statistics value = 24.0 p-value = 0.65234375
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 455ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 445ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 411ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 395ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 52ms/step
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 43ms/step
+[I 2024-12-23 21:22:45,192] Trial 19 finished with value: 0.6203296684002984 and parameters: {'n_units_0': 64, 'dropout_1': 0.15000000000000002, 'run': 2, 'epochs_1': 50, 'epochs_2': 70, 'lr_1': 0.0052449959066448535, 'lr_2': 0.00016268810659293288, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.0005324470038913565}. Best is trial 4 with value: 0.5592867591529402.
+Statistics value = 8.0 p-value = 0.92578125
+Statistics value = 11.0 p-value = 0.84375
+Statistics value = 17.0 p-value = 0.578125
+Statistics value = 35.0 p-value = 0.0078125
+
+EVER Study Best parameters:
+{'n_units_0': 16, 'dropout_1': 0.2, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.00021930485556643703, 'lr_2': 1.3492834268013232e-05, 'batch_size': 16, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0011290133559092666, 'reg_alpha_2': 0.00020914981329035596}
+Best value (Average MSE): 0.23391714665713081
+
+EV Study Best parameters:
+{'n_units_0': 16, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 40, 'epochs_2': 20, 'lr_1': 0.0003797544798678418, 'lr_2': 2.101079931010355e-05, 'batch_size': 16, 'regularization': 'l2', 'reg_alpha_1': 3.6283583803549155e-05}
+Best value (Average MSE): 1.0352273116668622
+
+PHEV Study Best parameters:
+{'n_units_0': 60, 'dropout_1': 0.2, 'run': 3, 'epochs_1': 30, 'epochs_2': 30, 'lr_1': 0.00012315571723666037, 'lr_2': 4.473636174621264e-05, 'batch_size': 12, 'regularization': 'l1', 'reg_alpha_1': 0.00042470585622618684}
+Best value (Average MSE): 0.5592867591529402
+
+FUEL Study Best parameters:
+{'n_units_0': 4, 'dropout_1': 0.1, 'run': 2, 'epochs_1': 30, 'epochs_2': 70, 'lr_1': 0.0001012145355811484, 'lr_2': 9.552335254144706e-05, 'batch_size': 12, 'regularization': 'l1_l2', 'reg_alpha_1': 0.0013230718692473172, 'reg_alpha_2': 0.0009990953045534545}
+Best value (Average MSE): 0.28328449592565075
