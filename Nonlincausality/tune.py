@@ -41,21 +41,6 @@ parser.add_argument('--province', type=str, default='anhui',
                     help='province name for data loading')
 
 def prepare_data(emission_data, vehicle_data):
-    # # 读取数据
-    # emission_data = pd.read_csv('dataset/000/anhui/total_monthly_state_emission.csv')
-    # vehicle_data = pd.read_csv('dataset/000/anhui/result_anhui.csv')
-    # df_col = {
-    #     'emission': 0,
-    #     'EVER': 1,
-    #     'PHEV': 2,
-    #     'FUEL': 3,
-    #     'EV': 4
-    # }
-    # # fuel_col_idx = df_col['EVER']
-    # # 数据集划分比例
-    # train_percent = 0.6
-    # val_percent = 0
-    # test_percent = 0.4
 
     # 数据日期清洗和准备
     emission_data['date'] = emission_data['date'].astype(str)
@@ -106,9 +91,7 @@ def data_selection(merged_data_n, fuel_col_idx):
     data_train = merged_data_n[:train_end, [fuel_col_idx, 0]]
     data_val = merged_data_n[train_end:val_end, [fuel_col_idx, 0]]
     data_test = merged_data_n[val_end:, [fuel_col_idx, 0]]
-    # data_train = merged_data_n[:16, [fuel_col_idx, 0]]
-    # data_val = merged_data_n[16:22, [fuel_col_idx, 0]]
-    # data_test = merged_data_n[22:, [fuel_col_idx, 0]]
+
     return data_train, data_val, data_test
 
 
@@ -116,10 +99,14 @@ def compute_error(data_test, model_X, model_XY, lag):
     from nonlincausality.utils import prepare_data_for_prediction, calculate_pred_and_errors
 
     data_X, data_XY = prepare_data_for_prediction(data_test, lag)
-    X_pred_X = model_X.predict(data_X, verbose=0)
-    X_pred_XY = model_XY.predict(data_XY, verbose=0)
-    error_X = np.mean((data_test[lag:, 0] - X_pred_X) ** 2)
-    error_XY = np.mean((data_test[lag:, 0] - X_pred_XY) ** 2)
+    current_x = data_test[lag:, 0]
+    _, _, error_X, error_XY = calculate_pred_and_errors(
+    current_x,
+    data_X,
+    data_XY,
+    model_X,
+    model_XY,
+    )
     # print("debug_here")
     # print(data_test[:, 0].shape)
     # print(data_test[lag:, 0].shape)
@@ -159,7 +146,8 @@ def objective(trial, merged_data_n, fuel_col_idx):
     # 添加数据shape检查
     # logger.info(f"Data shapes - Train: {data_train.shape}, Val: {data_val.shape}, Test: {data_test.shape}")
     # logger.info(f"Network architecture: {NN_neurons}")
-    lags = [2, 4] # TODO
+    lags = [2] # TODO
+    p_value_threshold = 0.1
     params = {
         'x': data_train,
         'maxlag': lags,
@@ -187,31 +175,85 @@ def objective(trial, merged_data_n, fuel_col_idx):
     params['callbacks'] = None
     params['verbose'] = False
     params['plot'] = False
-
+    # try:
+    #     results = nlc.nonlincausalityNN(**params)
+    #     total_err = 0
+    #     for lag in lags:
+    #         # 判断p值,数据显著的情况下才进行误差计算
+    #         if results[lag].p_value > 0.05:
+    #             return 1e10  # 返回一个很大的惩罚值, 使得这个trial被淘汰
+    #         else:
+    #             model_X = results[lag].best_model_X
+    #             model_XY = results[lag].best_model_XY
+    #             X_err, XY_err = compute_error(data_test, model_X, model_XY, lag)
+    #             # 只进行 X 预测的 MSE 计算 
+    #             total_err += np.mean(X_err**2)  # 累加误差
+    #     avg_err = total_err / len(lags)
+    #     return avg_err
+    # except Exception as e:
+    #     print(f"Trial failed: {e}")
+    #     return float('inf')
+        #########################################
     try:
-        results = nlc.nonlincausalityNN(**params)
-        total_error = 0
-        for lag in lags:
-            model_X = results[lag].best_model_X
-            model_XY = results[lag].best_model_XY
-            mse_X, mse_XY = compute_error(data_test, model_X, model_XY, lag)
-            total_error += mse_X  # 只进行 X 预测的 MSE 计算
-        avg_error = total_error / len(lags)
-        return avg_error
-    except Exception as e:
-        print(f"Trial failed: {e}")
+        max_retries = 3
+        results = None
+        retry_count = 0
+        
+        while retry_count < max_retries:
+            results = nlc.nonlincausalityNN(**params)
+            total_err = 0
+            valid_results = True
+            
+            # 检查所有lag的p值
+            for lag in lags:
+                logger.info(f"Trial {trial.number}, Retry {retry_count}, Lag {lag}: p_value = {results[lag].p_value:.4f}")
+                if results[lag].p_value > p_value_threshold:
+                    valid_results = False
+                    logger.warning(f"Trial {trial.number}: Invalid p_value > {p_value_threshold} at lag {lag}")
+                    break
+                    
+            if valid_results:
+                # p值都满足要求,计算误差
+                for lag in lags:
+                    model_X = results[lag].best_model_X
+                    model_XY = results[lag].best_model_XY
+                    X_err, XY_err = compute_error(data_test, model_X, model_XY, lag)
+                    total_err += np.mean(X_err**2)
+                avg_err = total_err / len(lags)
+                logger.info(f"Trial {trial.number}: Valid result with error = {avg_err:.4f}")
+                return avg_err
+            
+            # p值不满足要求,清理会话准备重试
+            tf.keras.backend.clear_session()
+            retry_count += 1
+            logger.warning(f"Trial {trial.number}: Retrying {retry_count}/{max_retries}")
+            
+        # 达到最大重试次数仍未成功    
+        logger.error(f"Trial {trial.number}: Max retries reached, returning penalty value")
         return float('inf')
+        
+    except Exception as e:
+        logger.error(f"Trial {trial.number} failed: {e}")
+        return float('inf')
+        #########################################
+
     finally:
         tf.keras.backend.clear_session()  # 清理会话
-
-# def my_callback(study, trial):
-#     # 获取当前试验的值和参数
-#     current_value = trial.value if trial.value is not None else "None"
-#     current_params = trial.params
-#     study_name = study.study_name  # 获取study名称
-
-#     # 打印自定义消息，包含study_name
-#     logging.info(f"[I {logging.Formatter().formatTime()}] Trial {trial.number} finished with value: {current_value} and parameters: {current_params}. Best is trial {study.best_trial.number} with value: {study.best_value}. Study name: {study_name}")
+    # try:
+    #     results = nlc.nonlincausalityNN(**params)
+    #     total_error = 0
+    #     for lag in lags:
+    #         model_X = results[lag].best_model_X
+    #         model_XY = results[lag].best_model_XY
+    #         mse_X, mse_XY = compute_error(data_test, model_X, model_XY, lag)
+    #         total_error += mse_X  # 只进行 X 预测的 MSE 计算
+    #     avg_error = total_error / len(lags)
+    #     return avg_error
+    # except Exception as e:
+    #     print(f"Trial failed: {e}")
+    #     return float('inf')
+    # finally:
+    #     tf.keras.backend.clear_session()  # 清理会话
 
 def run_study(study, objective, data, df_col):
     gpus = tf.config.list_physical_devices('GPU')
@@ -223,7 +265,7 @@ def run_study(study, objective, data, df_col):
             print(e)
             
     try:
-        study.optimize(lambda trial: objective(trial, data, df_col), n_trials=20, n_jobs=1)
+        study.optimize(lambda trial: objective(trial, data, df_col), n_trials=5, n_jobs=1)
         return {
             'best_params': study.best_params if study.best_trial else None,
             'best_value': study.best_value if study.best_trial else None
@@ -232,23 +274,8 @@ def run_study(study, objective, data, df_col):
         print(f"Study optimization failed: {e}")
         return None
 
-# def create_custom_logger():
-#     optuna.logging.set_verbosity(optuna.logging.INFO)
-#     original_handler = optuna.logging._get_library_root_logger().handlers[0]
-    
-#     class CustomFormatter(optuna.logging.LoggerFormatter):
-#         def __call__(self, record):
-#             # 添加 study name 到日志信息中
-#             if hasattr(record, 'study_name'):
-#                 record.msg = f"[{record.study_name}] {record.msg}"
-#             return super().__call__(record)
-    
-#     original_handler.setFormatter(CustomFormatter())
-
 
 if __name__ == "__main__":
-
-# Trial 4 finished with value: 1.7920793147689889 and parameters: {'n_units_0': 160, 'dropout_1': 0.25, 'run': 1, 'epochs_1': 100, 'epochs_2': 20, 'lr_1': 0.0007929543332500274, 'lr_2': 1.657312543660192e-05, 'batch_size': 4, 'regularization': 'l1', 'reg_alpha_1': 0.0026194948616905154}. Best is trial 4 with value: 1.7920793147689889
     args = parser.parse_known_args()[0]
     # 获取省份名称首字母大写形式
     province_cap = args.province.capitalize()
