@@ -34,7 +34,10 @@ from nonlincausality.utils import *
 from nonlincausality.results import ResultsNonlincausality
 import tensorflow as tf
 tf.random.set_seed(0)
-
+import random
+# 固定随机种子
+random.seed(0)
+np.random.seed(0)
 #%% Inside of the nonlincausality functions
 from statsmodels.tsa.stattools import acf
 from scipy.stats import t
