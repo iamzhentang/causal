@@ -32,10 +32,48 @@ from itertools import combinations
 
 from nonlincausality.utils import *
 from nonlincausality.results import ResultsNonlincausality
-
+import tensorflow as tf
+tf.random.set_seed(0)
 
 #%% Inside of the nonlincausality functions
-
+from statsmodels.tsa.stattools import acf
+from scipy.stats import t
+def dm_test(e1, e2, h=1, crit="MSE"):
+    """
+    Diebold-Mariano test for predictive accuracy.
+    
+    Parameters:
+    e1, e2 : array-like
+        Forecast errors from two models.
+    h : int
+        Forecast horizon.
+    crit : str
+        Criterion for loss differential. Options are "MSE" (mean squared error) or "MAE" (mean absolute error).
+    
+    Returns:
+    DM_stat : float
+        DM test statistic.
+    p_value : float
+        p-value of the test.
+    """
+    T = len(e1)
+    d = None
+    if crit == "MSE":
+        d = e1**2 - e2**2
+    elif crit == "MAE":
+        d = np.abs(e1) - np.abs(e2)
+    else:
+        raise ValueError("Unsupported criterion")
+    
+    mean_d = np.mean(d)
+    gamma = acf(d, nlags=h-1, fft=False)[1:]
+    V_d = np.var(d) + 2 * np.sum(gamma)
+    DM_stat = mean_d / np.sqrt(V_d / T)
+    
+    # Two-tailed test
+    p_value = 2 * t.cdf(-np.abs(DM_stat), df=T-1)
+    
+    return DM_stat, p_value
 
 def run_nonlincausality(
     network_architecture,
@@ -296,13 +334,32 @@ def run_nonlincausality(
             result_lag.best_model_X,
             result_lag.best_model_XY,
         )
+        # 检验error_X的绝对值是否显著大于error_XY的绝对值
+        '''
+        原假设：np.abs(error_X) 的中位数小于或等于 np.abs(error_XY) 的中位数。
+        备选假设：np.abs(error_X) 的中位数大于 np.abs(error_XY) 的中位数。
+        '''
+        # S, p_value = stats.wilcoxon(
+        #     np.abs(error_X), np.abs(error_XY), alternative="greater" # 检验是否有显著的正向效应
+        # )
+        # 判断模型对 x 的预测是否较好
+        mse_X = np.mean(error_X ** 2)
+        mse_threshold = 0.8  # 你可以根据具体情况调整这个阈值
+        if mse_X < mse_threshold:
+            # DM检验
+            S, p_value = dm_test(error_X, error_XY)
+            result_lag.test_statistic = S
+            result_lag.p_value = p_value
+            print("DM test statistic =", S, "DM p-value =", p_value, "mse_X = ", mse_X)
+        else:
+            S = None
+            p_value = 1
+            result_lag.test_statistic = None
+            result_lag.p_value = 1
+            print(f"Model prediction for X is not good enough, MSE = {mse_X}")
 
-        S, p_value = stats.wilcoxon(
-            np.abs(error_X), np.abs(error_XY), alternative="greater"
-        )
-
-        result_lag.p_value = p_value
-        result_lag.test_statistic = S
+        # result_lag.p_value = p_value
+        # result_lag.test_statistic = S
 
         # Printing the tests results
         print("Statistics value =", S, "p-value =", p_value)

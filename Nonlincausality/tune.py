@@ -16,19 +16,23 @@ import logging
 import tensorflow as tf
 # from optuna.integration import TFKerasPruningCallback
 import concurrent.futures
+import random
 # tf.config.experimental.enable_tensor_float_32_execution(False)
-
+# 固定随机种子
+random.seed(0)
+np.random.seed(0)
+tf.random.set_seed(0)
 # 配置 logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 # 只显示ERROR级别的日志
 # optuna.logging.set_verbosity(optuna.logging.ERROR)
 
 # 数据集划分比例---global
-train_percent = 0.6
+train_percent = 0.5
 val_percent = 0
-test_percent = 0.4
+test_percent = 0.5
 df_col = {
     'emission': 0,
     'EVER': 1,
@@ -59,8 +63,11 @@ def prepare_data(emission_data, vehicle_data):
     emission_data = emission_data.loc[emission_data_mask]
     vehicle_data = vehicle_data.loc[vehicle_data_mask]
 
-    # 丢掉第一列
+    # 丢掉第 2022/07/01 的数据
+    vehicle_data = vehicle_data[vehicle_data['date'] != '2022-07-01']
+    # 丢掉第一列和丢掉第 2022/07/01 的数据
     emission_data = emission_data.drop(emission_data.columns[[0]], axis=1)
+    emission_data = emission_data[emission_data['date'] != '2022-07-01']
 
     # 数据对齐
     emission_data.set_index('date', inplace=True)
@@ -91,6 +98,7 @@ def data_selection(merged_data_n, fuel_col_idx):
     data_train = merged_data_n[:train_end, [fuel_col_idx, 0]]
     data_val = merged_data_n[train_end:val_end, [fuel_col_idx, 0]]
     data_test = merged_data_n[val_end:, [fuel_col_idx, 0]]
+
 
     return data_train, data_val, data_test
 
@@ -126,18 +134,15 @@ def objective(trial, merged_data_n, fuel_col_idx):
 
 
     n_layers = 2
-    NN_config = ['g', 'dr']
+    NN_config = ['d', 'd']
     NN_neurons = []
-
-    # 根据输入数据大小调整神经元数量
-    input_size = data_train.shape[1]  # 获取输入维度
-    max_neurons = min(512, input_size * 4)  # 限制最大神经元数量
 
     for i in range(n_layers):
         if i % 2 == 0:
-            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 4, 64, step=4))
+            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 4, 32, step=4))
         else:
-            NN_neurons.append(trial.suggest_float(f'dropout_{i}', 0.1, 0.3, step=0.05))
+            # NN_neurons.append(trial.suggest_float(f'dropout_{i}', 0.1, 0.3, step=0.05))
+            NN_neurons.append(trial.suggest_int(f'n_units_{i}', 4, 32, step=4))
 
     # callbacks = [
     #     TFKerasPruningCallback(trial, 'val_loss'),
@@ -146,15 +151,15 @@ def objective(trial, merged_data_n, fuel_col_idx):
     # 添加数据shape检查
     # logger.info(f"Data shapes - Train: {data_train.shape}, Val: {data_val.shape}, Test: {data_test.shape}")
     # logger.info(f"Network architecture: {NN_neurons}")
-    lags = [2] # TODO
-    p_value_threshold = 0.1
+    lags = trial.suggest_int('lags', 1, 3)  # 调整 lags 参数的范围
+    p_value_threshold = 0.05
     params = {
         'x': data_train,
-        'maxlag': lags,
+        'maxlag': [lags],
         'NN_config': NN_config,
         'NN_neurons': NN_neurons,
         'x_test': data_test,
-        'run': trial.suggest_int('run', 1, 3, step=1),
+        # 'run': trial.suggest_int('run', 1, 3, step=1),
         'epochs_num': [trial.suggest_int('epochs_1', 30, 100, step=10), trial.suggest_int('epochs_2', 20, 100, step=10)],
         'learning_rate': [trial.suggest_float('lr_1', 1e-4, 1e-2, log=True), trial.suggest_float('lr_2', 1e-5, 1e-3, log=True)],
         'batch_size_num': trial.suggest_int('batch_size', 8, 16, step=4),
@@ -171,7 +176,7 @@ def objective(trial, merged_data_n, fuel_col_idx):
         params['reg_alpha'] = trial.suggest_float('reg_alpha_1', 1e-5, 1e-2, log=True)
     else:
         params['reg_alpha'] = None
-
+    params['run'] = 2
     params['callbacks'] = None
     params['verbose'] = False
     params['plot'] = False
@@ -198,6 +203,7 @@ def objective(trial, merged_data_n, fuel_col_idx):
         max_retries = 3
         results = None
         retry_count = 0
+        best_p_value = 1
         
         while retry_count < max_retries:
             results = nlc.nonlincausalityNN(**params)
@@ -205,22 +211,24 @@ def objective(trial, merged_data_n, fuel_col_idx):
             valid_results = True
             
             # 检查所有lag的p值
-            for lag in lags:
-                logger.info(f"Trial {trial.number}, Retry {retry_count}, Lag {lag}: p_value = {results[lag].p_value:.4f}")
-                if results[lag].p_value > p_value_threshold:
+            for lag in [lags]:
+                best_p_value = results[lag].p_value
+                logger.info(f"Trial {trial.number}, Retry {retry_count}, Lag {lag}: p_value = {best_p_value:.4f}")
+                if best_p_value > p_value_threshold:
                     valid_results = False
                     logger.warning(f"Trial {trial.number}: Invalid p_value > {p_value_threshold} at lag {lag}")
                     break
                     
             if valid_results:
                 # p值都满足要求,计算误差
-                for lag in lags:
+                for lag in [lags]:
                     model_X = results[lag].best_model_X
                     model_XY = results[lag].best_model_XY
                     X_err, XY_err = compute_error(data_test, model_X, model_XY, lag)
                     total_err += np.mean(X_err**2)
-                avg_err = total_err / len(lags)
+                avg_err = total_err / 1
                 logger.info(f"Trial {trial.number}: Valid result with error = {avg_err:.4f}")
+                trial.set_user_attr('best_p_value', best_p_value)
                 return avg_err
             
             # p值不满足要求,清理会话准备重试
@@ -266,9 +274,14 @@ def run_study(study, objective, data, df_col):
             
     try:
         study.optimize(lambda trial: objective(trial, data, df_col), n_trials=30, n_jobs=1)
+        best_trial = study.best_trial if study.best_trial else None
+        best_params = best_trial.params if best_trial else None
+        best_value = best_trial.value if best_trial else None
+        best_p_value = best_trial.user_attrs['best_p_value'] if best_trial and 'best_p_value' in best_trial.user_attrs else None
         return {
-            'best_params': study.best_params if study.best_trial else None,
-            'best_value': study.best_value if study.best_trial else None
+            'best_params': best_params,
+            'best_value': best_value,
+            'best_p_value': best_p_value
         }
     except Exception as e:
         print(f"Study optimization failed: {e}")
@@ -296,25 +309,25 @@ if __name__ == "__main__":
         study_name="EVER_STUDY",  # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-        sampler=optuna.samplers.TPESampler(seed=42)
+        sampler=optuna.samplers.TPESampler(seed=0)
     )
     study_ev = optuna.create_study(
         study_name="EV_STUDY",    # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-        sampler=optuna.samplers.TPESampler(seed=42)
+        sampler=optuna.samplers.TPESampler(seed=0)
     )
     study_phev = optuna.create_study(
         study_name="PHEV_STUDY",  # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-        sampler=optuna.samplers.TPESampler(seed=42)
+        sampler=optuna.samplers.TPESampler(seed=0)
     )
     study_fuel = optuna.create_study(
         study_name="FUEL_STUDY",  # 添加名称
         direction='minimize',
         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-        sampler=optuna.samplers.TPESampler(seed=42)
+        sampler=optuna.samplers.TPESampler(seed=0)
     )
 
     results = {}
@@ -323,7 +336,7 @@ if __name__ == "__main__":
             'EVER': executor.submit(run_study, study_ever, objective, merged_data_n, df_col['EVER']),
             'EV': executor.submit(run_study, study_ev, objective, merged_data_n, df_col['EV']), 
             'PHEV': executor.submit(run_study, study_phev, objective, merged_data_n, df_col['PHEV']),
-            'FUEL': executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL'])
+            'FUEL': executor.submit(run_study, study_fuel, objective, merged_data_n, df_col['FUEL']),
         }
         
         for name, future in futures.items():
@@ -335,69 +348,11 @@ if __name__ == "__main__":
 
     # 打印结果
     for name, result in results.items():
-        if result:
+        if result and result['best_p_value'] is not None and result['best_p_value'] < 0.1:
             print(f"\n{name} Study Best parameters:")
             print(result['best_params'])
             print(f"Best value (Average MSE):", result['best_value'])
+            print(f"Best p_value:", result['best_p_value'])
         else:
-            print(f"\n{name} Study failed to complete")
+            print(f"\n{name} Study failed to complete or did not meet p_value threshold")
 
-# if __name__ == "__main__":
-#     # 读取数据
-#     emission_data = pd.read_csv('dataset/000/anhui/total_monthly_state_emission.csv')
-#     vehicle_data = pd.read_csv('dataset/000/anhui/result_anhui.csv')
-
-#     merged_data_n = prepare_data(emission_data, vehicle_data)
-#     # 创建学习对象
-#     study_ever = optuna.create_study(
-#         study_name="EVER_STUDY",  # 添加名称
-#         direction='minimize',
-#         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-#         sampler=optuna.samplers.TPESampler(seed=42)
-#     )
-#     study_ev = optuna.create_study(
-#         study_name="EV_STUDY",    # 添加名称
-#         direction='minimize',
-#         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-#         sampler=optuna.samplers.TPESampler(seed=42)
-#     )
-#     study_phev = optuna.create_study(
-#         study_name="PHEV_STUDY",  # 添加名称
-#         direction='minimize',
-#         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-#         sampler=optuna.samplers.TPESampler(seed=42)
-#     )
-#     study_fuel = optuna.create_study(
-#         study_name="FUEL_STUDY",  # 添加名称
-#         direction='minimize',
-#         pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=10, interval_steps=1),
-#         sampler=optuna.samplers.TPESampler(seed=42)
-#     )
-
-#     # 开始优化
-#     study_ever.optimize(lambda trial: objective(trial, merged_data_n, df_col['EVER']), n_trials=20, n_jobs=2)
-#     # 开始优化
-#     study_ev.optimize(lambda trial: objective(trial, merged_data_n, df_col['EV']), n_trials=20, n_jobs=2)
-#     # 开始优化
-#     study_phev.optimize(lambda trial: objective(trial, merged_data_n, df_col['PHEV']), n_trials=20, n_jobs=2)
-#     # 开始优化
-#     study_fuel.optimize(lambda trial: objective(trial, merged_data_n, df_col['FUEL']), n_trials=20, n_jobs=2)
-
-#     # 打印结果
-#     print("\n study_ever Best parameters:")
-#     print(study_ever.best_params)
-#     print("\nBest value (Average MSE):", study_ever.best_value)
-#     # 打印结果
-#     print("\n study_ev Best parameters:")
-#     print(study_ev.best_params)
-#     print("\nBest value (Average MSE):", study_ev.best_value)
-#     # 打印结果
-#     print("\n study_phev Best parameters:")
-#     print(study_phev.best_params)
-#     print("\nBest value (Average MSE):", study_phev.best_value)
-#     # 打印结果
-#     print("\n study_fuel Best parameters:")
-#     print(study_fuel.best_params)
-#     print("\nBest value (Average MSE):", study_fuel.best_value)
-    
-#%%
